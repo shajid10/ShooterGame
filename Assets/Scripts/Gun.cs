@@ -6,7 +6,7 @@ public class Gun : MonoBehaviour {
     [SerializeField] private float timeInterval = 0.8f;
 
     float timeRemaining = 0f;
-    bool isShooting = true;
+    bool isShooting = false;
 
     private void Start() {
         timeRemaining = timeInterval;
@@ -26,5 +26,9 @@ public class Gun : MonoBehaviour {
 
     private void Shoot() {
         GameObject bulletInstance = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+    }
+
+    public void SetShooting(bool shooting) {
+        isShooting = shooting;
     }
 }
