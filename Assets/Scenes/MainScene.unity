@@ -119,6 +119,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &53951663
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 53951664}
+  m_Layer: 0
+  m_Name: BulletSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &53951664
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 53951663}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1915655022}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -565,6 +596,31 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1915655021 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4219438088255560028, guid: 69bcf3ea4a05d154a8289010b139ad81, type: 3}
+  m_PrefabInstance: {fileID: 2063120072957586777}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1915655022 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3973846324144010460, guid: 69bcf3ea4a05d154a8289010b139ad81, type: 3}
+  m_PrefabInstance: {fileID: 2063120072957586777}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1915655026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1915655021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c3b3e1d97cb5464e9ba3ada3504bc6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Gun
+  bulletPrefab: {fileID: 4137785768740791107, guid: 4b98d62fd5aa9994a96416dce6539897, type: 3}
+  bulletSpawnPoint: {fileID: 53951664}
+  timeInterval: 0.3
 --- !u!1001 &2063120072957586777
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -573,9 +629,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4219438088255560028, guid: 69bcf3ea4a05d154a8289010b139ad81, type: 3}
+      propertyPath: m_Name
+      value: Gun
+      objectReference: {fileID: 0}
     - target: {fileID: 6294151828348989854, guid: 69bcf3ea4a05d154a8289010b139ad81, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6294151828348989854, guid: 69bcf3ea4a05d154a8289010b139ad81, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7082935878499363346, guid: 69bcf3ea4a05d154a8289010b139ad81, type: 3}
       propertyPath: m_LocalPosition.x
@@ -619,8 +683,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 3973846324144010460, guid: 69bcf3ea4a05d154a8289010b139ad81, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 53951664}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4219438088255560028, guid: 69bcf3ea4a05d154a8289010b139ad81, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1915655026}
   m_SourcePrefab: {fileID: 100100000, guid: 69bcf3ea4a05d154a8289010b139ad81, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
