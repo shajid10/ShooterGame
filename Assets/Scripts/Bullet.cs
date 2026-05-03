@@ -11,4 +11,10 @@ public class Bullet : MonoBehaviour {
     private void FixedUpdate() {
         transform.position += transform.forward * speed * Time.deltaTime;
     }
+
+    private void OnTriggerEnter(Collider other) {
+        if (other.gameObject.CompareTag("Enemy")) {
+            Destroy(this);
+        }
+    }
 }

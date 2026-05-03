@@ -6,9 +6,11 @@ public class Player : MonoBehaviour {
     [SerializeField] private float detectionRadius = 2f;
 
     [SerializeField] private Gun gun;
+    [SerializeField] private Animator animator;
 
     private Transform currentTarget = null;
     bool shooting = false;
+    bool isMoving = false;
     private void Update() {
         HandleMovement();
         FindNearestEnemy();
@@ -17,8 +19,13 @@ public class Player : MonoBehaviour {
 
     private void HandleMovement() {
         Vector2 inputVector = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        if (inputVector.sqrMagnitude > 0f) {
+            animator.SetBool("isMoving", true);
+        } else {
+            animator.SetBool("isMoving", false);
+        }
         inputVector.Normalize();
-        Vector3 moveDir = new Vector3(inputVector.x, 0, inputVector.y);
+            Vector3 moveDir = new Vector3(inputVector.x, 0, inputVector.y);
 
         transform.position += moveDir * moveSpeed * Time.deltaTime;
         if (!shooting) {
