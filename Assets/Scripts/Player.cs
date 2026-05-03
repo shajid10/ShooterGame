@@ -11,6 +11,7 @@ public class Player : MonoBehaviour {
     private Transform currentTarget = null;
     bool shooting = false;
     bool isMoving = false;
+    bool hasTarget = false;
     private void Update() {
         HandleMovement();
         FindNearestEnemy();
@@ -19,13 +20,18 @@ public class Player : MonoBehaviour {
 
     private void HandleMovement() {
         Vector2 inputVector = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        if (inputVector.sqrMagnitude > 0f) {
+        if (inputVector.x != 0 || inputVector.y != 0) {
             animator.SetBool("isMoving", true);
         } else {
             animator.SetBool("isMoving", false);
         }
         inputVector.Normalize();
-            Vector3 moveDir = new Vector3(inputVector.x, 0, inputVector.y);
+
+        Vector3 moveDir = new Vector3(inputVector.x, 0, inputVector.y);
+        Vector3 localMove = transform.InverseTransformDirection(moveDir);
+        // Feed blend tree
+        animator.SetFloat("x", localMove.x);
+        animator.SetFloat("y", localMove.z);
 
         transform.position += moveDir * moveSpeed * Time.deltaTime;
         if (!shooting) {
@@ -52,6 +58,8 @@ public class Player : MonoBehaviour {
 
     private void HandleShooting() {
         if (currentTarget != null) {
+            hasTarget = true;
+            animator.SetBool("hasTarget", hasTarget);
             shooting = true;
             gun.SetShooting(true);
 
@@ -60,6 +68,8 @@ public class Player : MonoBehaviour {
             direction.Normalize();
             transform.forward = Vector3.Slerp(transform.forward, direction, Time.deltaTime * rotateSpeed);
         } else {
+            hasTarget = false;
+            animator.SetBool("hasTarget", hasTarget);
             shooting = false;
             gun.SetShooting(false);
         }
