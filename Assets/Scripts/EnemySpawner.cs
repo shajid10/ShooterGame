@@ -7,7 +7,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private List<Transform> spawnPoints;
 
     [SerializeField] private float timeInterval = 10f;
-    [SerializeField] private float timeRemaining = 0f;
+    
+    private float timeRemaining = 0f;
 
     private void Start() {
         timeRemaining = timeInterval;

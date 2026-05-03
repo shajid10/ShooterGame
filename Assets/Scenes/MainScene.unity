@@ -155,7 +155,6 @@ MonoBehaviour:
   - {fileID: 358076890}
   - {fileID: 734767961}
   timeInterval: 10
-  timeRemaining: 0
 --- !u!4 &7587105
 Transform:
   m_ObjectHideFlags: 0
@@ -820,6 +819,10 @@ PrefabInstance:
     - target: {fileID: 6294151828348989854, guid: 69bcf3ea4a05d154a8289010b139ad81, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6294151828348989854, guid: 69bcf3ea4a05d154a8289010b139ad81, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 7082935878499363346, guid: 69bcf3ea4a05d154a8289010b139ad81, type: 3}
       propertyPath: m_LocalPosition.x
