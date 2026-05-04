@@ -1,34 +1,36 @@
 using UnityEngine;
 
 public class Gun : MonoBehaviour {
-    [SerializeField] private GameObject bulletPrefab;
-    [SerializeField] private Transform bulletSpawnPoint;
-    [SerializeField] private float timeInterval = 0.8f;
+    [SerializeField] private GameObject m_BulletPrefab;
+    [SerializeField] private Transform m_BulletSpawnPoint;
+    [SerializeField] private float m_TimeInterval = 0.8f;
+    [SerializeField] private ParticleSystem m_MuzzleFlash;
 
-    float timeRemaining = 0f;
-    bool isShooting = false;
+    private float _timeRemaining = 0f;
+    private bool _isShooting = false;
 
     private void Start() {
-        timeRemaining = timeInterval;
+        _timeRemaining = m_TimeInterval;
     }
 
     private void Update() {
-        if (isShooting) {
-            if (timeRemaining > 0) {
-                timeRemaining -= Time.deltaTime;
+        if (_isShooting) {
+            if (_timeRemaining > 0) {
+                _timeRemaining -= Time.deltaTime;
             } else {
                 Shoot();
 
-                timeRemaining = timeInterval;
+                _timeRemaining = m_TimeInterval;
             }
         }
     }
 
     private void Shoot() {
-        GameObject bulletInstance = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+        GameObject bulletInstance = Instantiate(m_BulletPrefab, m_BulletSpawnPoint.position, m_BulletSpawnPoint.rotation);
+        m_MuzzleFlash.Play();
     }
 
     public void SetShooting(bool shooting) {
-        isShooting = shooting;
+        _isShooting = shooting;
     }
 }

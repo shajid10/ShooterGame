@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 392986498406465986}
   - component: {fileID: 4324300799179211982}
   - component: {fileID: 6661020455128214887}
+  - component: {fileID: 1808807386517961264}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -74,6 +75,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!114 &1808807386517961264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 491978197877446929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 324028a9217ab864da5fd2d8b0fb1f98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyFlash
+  m_FlashColor: {r: 1, g: 1, b: 1, a: 1}
+  m_FlashDuration: 0.1
 --- !u!1 &5124426674461652811
 GameObject:
   m_ObjectHideFlags: 0
@@ -141,7 +156,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6af20d21fdb3e9846be9fcc5368045e6, type: 2}
+  - {fileID: 2100000, guid: 2ca02ef438da1fa42813c6da3772f04f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

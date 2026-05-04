@@ -3,6 +3,8 @@ using UnityEngine;
 public class Bullet : MonoBehaviour {
     [SerializeField] private float m_Speed = 12f;
     [SerializeField] private float m_TimeToLive = 3f;
+    
+    [SerializeField] private float m_Knockback = 2f;
 
     private void Start() {
         Destroy(gameObject, m_TimeToLive);
@@ -14,7 +16,8 @@ public class Bullet : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.CompareTag("Enemy")) {
-            print(other.gameObject.name);
+            Enemy enemy = other.gameObject.GetComponentInParent<Enemy>();
+            enemy.Hurt(1, m_Knockback);
             Destroy(this.gameObject);
         }
     }
