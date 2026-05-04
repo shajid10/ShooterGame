@@ -1,6 +1,8 @@
+using System;
 using UnityEngine;
 
-public class Player : MonoBehaviour {
+public class Player : MonoBehaviour
+{
     [SerializeField] private float m_MoveSpeed = 7f;
     [SerializeField] private float m_RotateSpeed = 10f;
     [SerializeField] private float m_DetectionRadius = 2f;
@@ -18,6 +20,13 @@ public class Player : MonoBehaviour {
     private static readonly int X = Animator.StringToHash("x");
     private static readonly int Y = Animator.StringToHash("y");
 
+    public static Player Instance {get; private set;}
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+    
     private void Update() {
         HandleMovement();
         FindNearestEnemy();
@@ -78,6 +87,11 @@ public class Player : MonoBehaviour {
             _shooting = false;
             m_Gun.SetShooting(false);
         }
+    }
+
+    public Gun GetGun()
+    {
+        return m_Gun;
     }
 }
 
