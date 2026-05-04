@@ -1,13 +1,13 @@
 using UnityEngine;
 
 public class Enemy : MonoBehaviour {
-    [SerializeField] private float moveSpeed = 3f;
-    private Transform player;
-    private Rigidbody rb;
+    [SerializeField] private float m_MoveSpeed = 3f;
+    private Transform _player;
+    private Rigidbody _rb;
 
     private void Start() {
-        player = GameObject.FindWithTag("Player").transform;
-        rb = GetComponent<Rigidbody>();
+        _player = GameObject.FindWithTag("Player").transform;
+        _rb = GetComponent<Rigidbody>();
     }
 
     private void Update() {
@@ -15,11 +15,11 @@ public class Enemy : MonoBehaviour {
     }
 
     private void HandleMovement() {
-        Vector3 direction = player.position - transform.position;
+        Vector3 direction = _player.position - transform.position;
         Vector3 playerDirection = new Vector3 (direction.x, 0, direction.z);
         playerDirection.Normalize();
 
 
-        rb.Move(transform.position + playerDirection * moveSpeed * Time.deltaTime, Quaternion.identity);
+        _rb.Move(transform.position + playerDirection * (m_MoveSpeed * Time.deltaTime), Quaternion.identity);
     }
 }

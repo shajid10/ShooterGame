@@ -3,30 +3,30 @@ using System.Collections.Generic;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject enemyPrefab;
-    [SerializeField] private List<Transform> spawnPoints;
+    [SerializeField] private GameObject m_EnemyPrefab;
+    [SerializeField] private List<Transform> m_SpawnPoints;
 
-    [SerializeField] private float timeInterval = 10f;
+    [SerializeField] private float m_TimeInterval = 10f;
     
-    private float timeRemaining = 0f;
+    private float _timeRemaining = 0f;
 
     private void Start() {
-        timeRemaining = timeInterval;
+        _timeRemaining = m_TimeInterval;
     }
 
     private void FixedUpdate() {
-        if (timeRemaining > 0) {
-            timeRemaining -= Time.deltaTime;
+        if (_timeRemaining > 0) {
+            _timeRemaining -= Time.deltaTime;
         } else {
             SpawnEnemy();
-            timeRemaining = timeInterval;
+            _timeRemaining = m_TimeInterval;
         }
     }
 
     private void SpawnEnemy() {
-        int selectedSpawnPointIndex = Random.Range(0, spawnPoints.Count);
-        Transform selectedSpawnPoint = spawnPoints[selectedSpawnPointIndex];
+        int selectedSpawnPointIndex = Random.Range(0, m_SpawnPoints.Count);
+        Transform selectedSpawnPoint = m_SpawnPoints[selectedSpawnPointIndex];
 
-        GameObject spawnedEnemy = Instantiate(enemyPrefab, selectedSpawnPoint.position, selectedSpawnPoint.rotation);
+        GameObject spawnedEnemy = Instantiate(m_EnemyPrefab, selectedSpawnPoint.position, selectedSpawnPoint.rotation);
     }
 }

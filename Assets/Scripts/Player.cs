@@ -9,9 +9,9 @@ public class Player : MonoBehaviour {
     [SerializeField] private Animator m_Animator;
     [SerializeField] private DynamicJoystick m_DynamicJoystick;
 
-    private Transform currentTarget = null;
-    private bool shooting = false;
-    private bool hasTarget = false;
+    private Transform _currentTarget = null;
+    private bool _shooting = false;
+    private bool _hasTarget = false;
     
     private static readonly int HasTarget = Animator.StringToHash("hasTarget");
     private static readonly int IsMoving = Animator.StringToHash("isMoving");
@@ -40,7 +40,7 @@ public class Player : MonoBehaviour {
         m_Animator.SetFloat(Y, localMove.z);
 
         transform.position += moveDir * (m_MoveSpeed * Time.deltaTime);
-        if (!shooting) {
+        if (!_shooting) {
             transform.forward = Vector3.Slerp(transform.forward, moveDir, Time.deltaTime * m_RotateSpeed);
         }
     }
@@ -50,33 +50,32 @@ public class Player : MonoBehaviour {
 
         float closestDistance = Mathf.Infinity;
 
-        foreach (Collider hit in hits) {
-            if (hit.CompareTag("Enemy")) {
-                float distance = Vector3.Distance(transform.position, hit.transform.position);
+        foreach (Collider hit in hits)
+        {
+            if (!hit.CompareTag("Enemy")) continue;
+            float distance = Vector3.Distance(transform.position, hit.transform.position);
 
-                if (distance < closestDistance) {
-                    currentTarget = hit.transform;
-                    closestDistance = distance;
-                }
-            }
+            if (!(distance < closestDistance)) continue;
+            _currentTarget = hit.transform;
+            closestDistance = distance;
         }
     }
 
     private void HandleShooting() {
-        if (currentTarget) {
-            hasTarget = true;
-            m_Animator.SetBool(HasTarget, hasTarget);
-            shooting = true;
+        if (_currentTarget) {
+            _hasTarget = true;
+            m_Animator.SetBool(HasTarget, _hasTarget);
+            _shooting = true;
             m_Gun.SetShooting(true);
 
-            Vector3 direction = currentTarget.position - transform.position;
+            Vector3 direction = _currentTarget.position - transform.position;
             direction.y = 0;
             direction.Normalize();
             transform.forward = Vector3.Slerp(transform.forward, direction, Time.deltaTime * m_RotateSpeed);
         } else {
-            hasTarget = false;
-            m_Animator.SetBool(HasTarget, hasTarget);
-            shooting = false;
+            _hasTarget = false;
+            m_Animator.SetBool(HasTarget, _hasTarget);
+            _shooting = false;
             m_Gun.SetShooting(false);
         }
     }
