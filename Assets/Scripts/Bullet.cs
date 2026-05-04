@@ -1,15 +1,15 @@
 using UnityEngine;
 
 public class Bullet : MonoBehaviour {
-    [SerializeField] private float speed = 12f;
-    [SerializeField] private float timeToLive = 3f;
+    [SerializeField] private float m_Speed = 12f;
+    [SerializeField] private float m_TimeToLive = 3f;
 
     private void Start() {
-        Destroy(gameObject, timeToLive);
+        Destroy(gameObject, m_TimeToLive);
     }
 
     private void FixedUpdate() {
-        transform.position += transform.forward * speed * Time.deltaTime;
+        transform.position += transform.forward * (m_Speed * Time.deltaTime);
     }
 
     private void OnTriggerEnter(Collider other) {
