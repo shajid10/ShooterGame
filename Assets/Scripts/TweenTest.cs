@@ -1,17 +1,10 @@
+using System;
 using UnityEngine;
 using DG.Tweening;
 
-public class TweenTest : MonoBehaviour
-{
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+public class TweenTest : MonoBehaviour {
+    private void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        transform.DOMove(new Vector3(0, 2.5f, 0), 1f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
     }
 }

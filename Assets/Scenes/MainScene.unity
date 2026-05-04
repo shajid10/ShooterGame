@@ -148,8 +148,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9d3b3fed42125d469098729655d2a9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
-  m_EnemyPrefab: {fileID: 0}
-  m_SpawnPoints: []
+  m_EnemyPrefab: {fileID: 491978197877446929, guid: a8d20a2f6476a7d41a43825ae093426c, type: 3}
+  m_SpawnPoints:
+  - {fileID: 1774017514}
+  - {fileID: 2012754741}
+  - {fileID: 358076890}
+  - {fileID: 734767961}
   m_TimeInterval: 10
 --- !u!4 &7587105
 Transform:
@@ -399,8 +403,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c84b3f7f7b4b1e4096eb7f10d9d649a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraController
-  m_Target: {fileID: 0}
-  m_Offset: {x: 0, y: 8, z: -8}
+  m_Target: {fileID: 456924856}
+  m_Offset: {x: 0, y: 8, z: -3}
 --- !u!1 &358076889
 GameObject:
   m_ObjectHideFlags: 0
