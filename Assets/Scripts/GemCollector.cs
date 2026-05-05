@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using TSF.Utilities;
 
 public class GemCollector : MonoBehaviour
 {
@@ -9,7 +11,9 @@ public class GemCollector : MonoBehaviour
     
     private Collider[] _hits;
     
-    private int _gemCount = 0;
+    private long _gemCount = 0;
+    
+    public event EventHandler OnGemCollected;
     
     private void Start() {}
 
@@ -30,10 +34,13 @@ public class GemCollector : MonoBehaviour
                 gem.AttractTo(transform);
                 if (Vector3.Distance(transform.position, gem.transform.position) <= m_CollectDistance)
                 {
-                    _gemCount++;
+                    _gemCount += 100;
+                    OnGemCollected?.Invoke(this, EventArgs.Empty);
                     Destroy(gem.gameObject);
                 }
             }
         }
     }
+    
+    public long  GetGemCount() {return _gemCount;}
 }
