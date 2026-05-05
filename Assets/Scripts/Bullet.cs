@@ -1,10 +1,11 @@
+using System;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour {
     [SerializeField] private float m_Speed = 12f;
     [SerializeField] private float m_TimeToLive = 3f;
-    
     [SerializeField] private float m_Knockback = 2f;
+    [SerializeField] private GameObject m_BulletImpactParticle;
 
     private void Start() {
         Destroy(gameObject, m_TimeToLive);
@@ -18,6 +19,7 @@ public class Bullet : MonoBehaviour {
         if (other.gameObject.CompareTag("Enemy")) {
             Enemy enemy = other.gameObject.GetComponentInParent<Enemy>();
             enemy.Hurt(1, m_Knockback);
+            Instantiate(m_BulletImpactParticle, transform.position, transform.rotation);
             Destroy(this.gameObject);
         }
     }
