@@ -128,3 +128,4 @@ MonoBehaviour:
   m_Speed: 12
   m_TimeToLive: 3
   m_Knockback: 4
+  m_BulletImpactParticle: {fileID: 5836829992871880211, guid: 0cf4c4cbf81666042a1692417fa510dd, type: 3}
