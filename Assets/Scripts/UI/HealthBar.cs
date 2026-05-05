@@ -19,7 +19,8 @@ namespace UI
         private void HealthComponentOnOnHealthChanged(object sender, EventArgs e)
         {
             print(m_HealthComponent.GetHealth());
-            m_FillImage.DOFillAmount(m_HealthComponent.GetHealthPercentage(), m_FillDuration).SetEase(Ease.InOutSine);
+            if (m_FillImage != null)
+                m_FillImage.DOFillAmount(m_HealthComponent.GetHealthPercentage(), m_FillDuration).SetEase(Ease.InOutSine);
         }
     }
 }

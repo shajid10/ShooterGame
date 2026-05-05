@@ -5,7 +5,8 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour {
     [SerializeField] private float m_MoveSpeed = 3f;
-    
+    [SerializeField] private ParticleSystem m_DeathParticles;
+    [SerializeField] private GameObject m_Gem;
     private Vector3 _directionToPlayer;
 
     private NavMeshAgent _navAgent;
@@ -41,7 +42,9 @@ public class Enemy : MonoBehaviour {
     
     private void HealthOnDeath(object sender, EventArgs e)
     {
-        print("dead");
+        Instantiate(m_DeathParticles, transform.position, Quaternion.identity);
+        Instantiate(m_Gem, transform.position, Quaternion.identity);
+        m_DeathParticles.Play();
         Destroy(gameObject);
     }
 }
