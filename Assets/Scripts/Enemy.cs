@@ -1,24 +1,31 @@
+using System;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour {
     [SerializeField] private float m_MoveSpeed = 3f;
+    
+    private Vector3 _directionToPlayer;
 
     private NavMeshAgent _navAgent;
     private Transform _player;
     private Rigidbody _rb;
     private EnemyFlash _enemyFlash;
-    private Vector3 _directionToPlayer;
+    private HealthComponent _health;
 
     private void Start() {
         _player = FindAnyObjectByType<Player>().transform;
         _enemyFlash = GetComponent<EnemyFlash>();
         _navAgent = GetComponent<NavMeshAgent>();
         _rb = GetComponent<Rigidbody>();
+        _health = GetComponent<HealthComponent>();
         
         _navAgent.speed = m_MoveSpeed;
+        
+        _health.OnDeath += HealthOnDeath;
     }
+    
 
     private void Update() {
         _navAgent.SetDestination(_player.position);
@@ -29,5 +36,12 @@ public class Enemy : MonoBehaviour {
         _rb.AddForce(-_directionToPlayer * knockback, ForceMode.Impulse);
         _enemyFlash.Flash();
         transform.DOShakeScale(0.5f, new Vector3(0.1f, 0.1f, 0.1f));
+        _health.ReduceHealth(damage);
+    }
+    
+    private void HealthOnDeath(object sender, EventArgs e)
+    {
+        print("dead");
+        Destroy(gameObject);
     }
 }
