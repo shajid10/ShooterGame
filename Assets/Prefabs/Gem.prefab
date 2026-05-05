@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7080828966393723962}
   - component: {fileID: 5656032948875478012}
   - component: {fileID: 5281615192667678164}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Gem
   m_TagString: Gem
   m_Icon: {fileID: 0}
@@ -68,12 +68,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4527900738002941042}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 971cc77fb1247ab4dae473be44bea52c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gem
-  m_InitialForceMultiplier: 5
+  m_MoveSpeed: 10
+  m_Acceleration: 25
 --- !u!1 &6967299775880065290
 GameObject:
   m_ObjectHideFlags: 0
@@ -86,7 +87,7 @@ GameObject:
   - component: {fileID: 5571672951361946246}
   - component: {fileID: 7199889331957442315}
   - component: {fileID: 4323796584905655265}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}

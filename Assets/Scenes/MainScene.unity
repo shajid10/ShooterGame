@@ -1128,6 +1128,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1007516408791189984, guid: 69bcf3ea4a05d154a8289010b139ad81, type: 3}
+      propertyPath: m_CollectSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1007516408791189984, guid: 69bcf3ea4a05d154a8289010b139ad81, type: 3}
+      propertyPath: m_CollectRadius
+      value: 2.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1007516408791189984, guid: 69bcf3ea4a05d154a8289010b139ad81, type: 3}
+      propertyPath: m_GemLayer.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 1268773250449933344, guid: 69bcf3ea4a05d154a8289010b139ad81, type: 3}
       propertyPath: m_DynamicJoystick
       value: 
