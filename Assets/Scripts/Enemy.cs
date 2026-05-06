@@ -36,7 +36,7 @@ public class Enemy : MonoBehaviour {
     {
         _rb.AddForce(-_directionToPlayer * knockback, ForceMode.Impulse);
         _enemyFlash.Flash();
-        transform.DOShakeScale(0.5f, new Vector3(0.1f, 0.1f, 0.1f));
+        transform.DOShakeScale(0.5f, new Vector3(0.1f, 0.1f, 0.1f)).SetLink(gameObject);
         _health.ReduceHealth(damage);
     }
     

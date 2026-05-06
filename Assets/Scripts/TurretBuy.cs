@@ -7,6 +7,8 @@ public class TurretBuy : MonoBehaviour
     [SerializeField] private Image m_FillImage;
     [SerializeField] private int m_TurretCost;
     [SerializeField] private float m_FillDuration;
+    [SerializeField] private Transform m_TurretSpawnPoint;
+    [SerializeField] private GameObject m_TurretPrefab;
 
     private GemCollector _gemCollector;
     private Tween _fillTween;
@@ -22,6 +24,8 @@ public class TurretBuy : MonoBehaviour
         {
             if (_gemCollector.GetGemCount() >= m_TurretCost)
                 StartFilling();
+            if (_gemCollector.GetGemCount() < m_TurretCost)
+                StopFilling();
         }
     }
 
@@ -29,8 +33,7 @@ public class TurretBuy : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (_gemCollector.GetGemCount() < m_TurretCost)
-                StopFilling();
+            StopFilling();
         }
     }
 
@@ -46,7 +49,7 @@ public class TurretBuy : MonoBehaviour
 
     private void StopFilling()
     {
-        _fillTween?.Kill();
+        _fillTween.Kill();
         m_FillImage.fillAmount = 0f;
     }
 
@@ -54,6 +57,7 @@ public class TurretBuy : MonoBehaviour
     {
         _gemCollector.ReduceGemCount(m_TurretCost);
         // spawn turret
+        Instantiate(m_TurretPrefab, m_TurretSpawnPoint.position, m_TurretSpawnPoint.rotation);
         Destroy(gameObject);
     }
 }

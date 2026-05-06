@@ -9,6 +9,8 @@ public class CameraController : MonoBehaviour
     [SerializeField] private float m_CamFollowSpeed;
     [SerializeField] private float m_CamShakeIntensity = 0.3f;
 
+    private Tween _camTweener;
+    
     private Gun _gun;
 
     private void Start()
@@ -26,7 +28,8 @@ public class CameraController : MonoBehaviour
     private void Update()
     {
         //transform.position = Vector3.Lerp(transform.position, m_Target.position + m_Offset, Time.deltaTime * m_CamFollowSpeed);
-        transform.DOMove(m_Target.position + m_Offset, m_CamFollowSpeed).SetSpeedBased();
+        _camTweener?.Kill();
+        _camTweener = transform.DOMove(m_Target.position + m_Offset, m_CamFollowSpeed).SetSpeedBased().SetLink(gameObject);
     }
 
     private void CameraShake()

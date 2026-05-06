@@ -2,6 +2,7 @@ using System;
 using TMPro;
 using UnityEngine;
 using TSF.Utilities;
+using DG.Tweening;
 
 namespace UI
 {
@@ -25,6 +26,7 @@ namespace UI
         {
             long gemCount = _gemCollector.GetGemCount();
             m_Text.text = Helper.GetRoundUpNumbersAsString(gemCount);
+            m_Text.transform.DOPunchScale(new Vector3(0.2f, 0.2f, 0.2f), 0.3f, 1);
         }
     }
 }
