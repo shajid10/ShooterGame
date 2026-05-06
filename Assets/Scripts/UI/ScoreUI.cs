@@ -17,11 +17,11 @@ namespace UI
             _player = Player.Instance;
             _gemCollector = _player.GetComponent<GemCollector>();
             
-            _gemCollector.OnGemCollected += GemCollectorOnOnGemCollected;
+            _gemCollector.OnGemCountChanged += GemCollectorOnOnGemCountChanged;
             m_Text.text = "0";
         }
 
-        private void GemCollectorOnOnGemCollected(object sender, EventArgs e)
+        private void GemCollectorOnOnGemCountChanged(object sender, EventArgs e)
         {
             long gemCount = _gemCollector.GetGemCount();
             m_Text.text = Helper.GetRoundUpNumbersAsString(gemCount);

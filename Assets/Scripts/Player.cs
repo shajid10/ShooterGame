@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     private Transform _currentTarget = null;
     private bool _shooting = false;
     private bool _hasTarget = false;
+    private CharacterController _characterController;
     
     private static readonly int HasTarget = Animator.StringToHash("hasTarget");
     private static readonly int IsMoving = Animator.StringToHash("isMoving");
@@ -25,6 +26,11 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+    }
+
+    private void Start()
+    {
+        _characterController = GetComponent<CharacterController>();
     }
     
     private void Update() {
@@ -48,7 +54,8 @@ public class Player : MonoBehaviour
         m_Animator.SetFloat(X, localMove.x);
         m_Animator.SetFloat(Y, localMove.z);
 
-        transform.position += moveDir * (m_MoveSpeed * Time.deltaTime);
+        //transform.position += moveDir * (m_MoveSpeed * Time.deltaTime);
+        _characterController.Move(moveDir * (m_MoveSpeed * Time.deltaTime));
         if (!_shooting) {
             transform.forward = Vector3.Slerp(transform.forward, moveDir, Time.deltaTime * m_RotateSpeed);
         }

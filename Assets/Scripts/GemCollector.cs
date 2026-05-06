@@ -14,7 +14,7 @@ public class GemCollector : MonoBehaviour
     
     private long _gemCount = 0;
     
-    public event EventHandler OnGemCollected;
+    public event EventHandler OnGemCountChanged;
     
     private void Start() {}
 
@@ -31,12 +31,11 @@ public class GemCollector : MonoBehaviour
             Gem gem = hit.gameObject.GetComponentInParent<Gem>();
             if (gem)
             {
-                print("gem found");
                 gem.AttractTo(transform);
                 if (Vector3.Distance(transform.position, gem.transform.position) <= m_CollectDistance)
                 {
                     _gemCount += 100;
-                    OnGemCollected?.Invoke(this, EventArgs.Empty);
+                    OnGemCountChanged?.Invoke(this, EventArgs.Empty);
                     Destroy(gem.gameObject);
                 }
             }
@@ -44,4 +43,10 @@ public class GemCollector : MonoBehaviour
     }
     
     public long  GetGemCount() {return _gemCount;}
+
+    public void ReduceGemCount(int amount)
+    {
+        _gemCount -= amount;
+        OnGemCountChanged?.Invoke(this, EventArgs.Empty);
+    }
 }
