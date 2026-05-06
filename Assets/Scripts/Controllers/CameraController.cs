@@ -26,7 +26,7 @@ public class CameraController : MonoBehaviour
     private void Update()
     {
         //transform.position = Vector3.Lerp(transform.position, m_Target.position + m_Offset, Time.deltaTime * m_CamFollowSpeed);
-        transform.DOMove(m_Target.position + m_Offset, m_CamFollowSpeed);
+        transform.DOMove(m_Target.position + m_Offset, m_CamFollowSpeed).SetSpeedBased();
     }
 
     private void CameraShake()

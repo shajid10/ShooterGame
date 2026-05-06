@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using TSF.Utilities;
+using UnityEditor;
 
 public class GemCollector : MonoBehaviour
 {

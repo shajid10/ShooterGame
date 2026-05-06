@@ -7,7 +7,7 @@ namespace UI
 {
     public class ScoreUI : MonoBehaviour
     {
-        [SerializeField] private TMP_Text m_Text;
+        [SerializeField] private TextMeshProUGUI m_Text;
         
         private GemCollector _gemCollector;
         private Player _player;
