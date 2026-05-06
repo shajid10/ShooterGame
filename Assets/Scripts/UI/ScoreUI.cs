@@ -19,6 +19,7 @@ namespace UI
         {
             _player = Player.Instance;
             _gemCollector = _player.GetGemCollector();
+            Debug.Log("UI connected to collector: " + _gemCollector.GetInstanceID());
             
             _gemCollector.GemCountChangedEvent += OnGemCountChanged;
             m_Text.text = "0";
@@ -26,6 +27,7 @@ namespace UI
 
         private void OnGemCountChanged()
         {
+            print("gem count changed");
             long gemCount = _gemCollector.GetGemCount();
             m_Text.text = Helper.GetRoundUpNumbersAsString(gemCount);
             

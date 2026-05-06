@@ -11,17 +11,16 @@ public class GemCollector : MonoBehaviour
     
     private List<Gem> _nearbyGems;
     
-    private long _gemCount = 0;
+    private long _gemCount;
     
     public event Action GemCountChangedEvent;
 
     private void Start()
     {
         _nearbyGems = new List<Gem>();
+        Debug.Log("Collector instance: " + GetInstanceID());
     }
-
     
-    //to do: Replace with ontrigger enter events
     private void FixedUpdate()
     {
         Attract();
@@ -49,7 +48,8 @@ public class GemCollector : MonoBehaviour
             gem.AttractTo(transform);
             if (Vector3.Distance(transform.position, gem.transform.position) <= m_CollectDistance)
             {
-                _gemCount += 100;
+                _gemCount += gem.GemValue;
+                print("invoking event");
                 GemCountChangedEvent?.Invoke();
                 _nearbyGems.RemoveAt(i);
                 Destroy(gem.gameObject);

@@ -16,7 +16,7 @@ namespace UI
             m_HealthComponent.HealthChangedEvent += OnHealthChanged;
         }
 
-        private void OnHealthChanged(HealthComponent healthComponent)
+        private void OnHealthChanged()
         {
             if (m_FillImage != null)
                 m_FillImage.DOFillAmount(m_HealthComponent.GetHealthPercentage(), m_FillDuration).SetEase(Ease.InOutSine).SetLink(gameObject);

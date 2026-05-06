@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Gem : MonoBehaviour
 {
+    [SerializeField] private int m_GemValue = 100;
     [SerializeField] private float m_MoveSpeed = 10f;
     [SerializeField] private float m_Acceleration = 25f;
 
@@ -9,6 +10,8 @@ public class Gem : MonoBehaviour
     private float _currentSpeed;
     
     private Rigidbody _rigidbody;
+
+    public int GemValue => m_GemValue;
 
     private void Start()
     {
@@ -40,4 +43,6 @@ public class Gem : MonoBehaviour
             _currentSpeed * Time.deltaTime
         );
     }
+    
+    
 }

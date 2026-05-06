@@ -15,7 +15,7 @@ namespace UI
         //change event and params
         private void Start()
         {
-            _gemCollector = Player.Instance.GetComponent<GemCollector>();
+            _gemCollector = Player.Instance.GetGemCollector();
             _gemCollector.GemCountChangedEvent += OnGemCountChanged;
         }
 

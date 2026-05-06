@@ -5,23 +5,23 @@ public class HealthComponent : MonoBehaviour
 {
     [SerializeField] private int m_Health;
     [SerializeField] private int m_MaxHealth;
-    public event EventHandler OnHealthChanged;
-    public event EventHandler EnemyDeathEvent;
+    public event Action HealthChangedEvent;
+    public event Action EnemyDeathEvent;
 
     public void ReduceHealth(int amount)
     {
         m_Health -= amount;
-        OnHealthChanged?.Invoke(this, EventArgs.Empty);
+        HealthChangedEvent?.Invoke();
         if (m_Health <= 0)
         {
-            EnemyDeathEvent?.Invoke(this, EventArgs.Empty);
+            EnemyDeathEvent?.Invoke();
         }
     }
     
     public void Heal(int amount)
     {
         m_Health += amount;
-        OnHealthChanged?.Invoke(this, EventArgs.Empty);
+        HealthChangedEvent?.Invoke();
     }
 
     public int GetHealth() { return m_Health; }

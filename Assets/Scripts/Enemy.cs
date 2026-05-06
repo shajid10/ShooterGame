@@ -40,7 +40,7 @@ public class Enemy : MonoBehaviour {
         _health.ReduceHealth(damage);
     }
     
-    private void OnEnemyDeathEvent(object sender, EventArgs e)
+    private void OnEnemyDeathEvent()
     {
         Instantiate(m_DeathParticles, transform.position, Quaternion.identity);
         Instantiate(m_Gem, transform.position, Quaternion.identity);

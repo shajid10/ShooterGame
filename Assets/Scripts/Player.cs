@@ -32,7 +32,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         _characterController = GetComponent<CharacterController>();
-        _gemCollector = GetComponent<GemCollector>();
+        _gemCollector = GetComponentInChildren<GemCollector>();
     }
     
     private void Update() {
