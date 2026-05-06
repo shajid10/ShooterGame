@@ -153,13 +153,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9d3b3fed42125d469098729655d2a9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
-  m_EnemyPrefab: {fileID: 491978197877446929, guid: a8d20a2f6476a7d41a43825ae093426c, type: 3}
+  m_EnemyPrefab: {fileID: 4324300799179211982, guid: a8d20a2f6476a7d41a43825ae093426c, type: 3}
   m_SpawnPoints:
   - {fileID: 1774017514}
   - {fileID: 2012754741}
   - {fileID: 358076890}
   - {fileID: 734767961}
-  m_TimeInterval: 3.12
+  m_TimeInterval: 3
 --- !u!4 &7587105
 Transform:
   m_ObjectHideFlags: 0
@@ -739,6 +739,21 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.8, z: 0}
+--- !u!114 &456924860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 308466131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6ebb03b693816f4e859fa4c544d1245, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GemSpawnerPlayer
+  m_GemPrefab: {fileID: 4527900738002941042, guid: 0680b4405ebd5c442a95f03a5ec8c324, type: 3}
+  m_DetectionRadius: 4
+  m_SpawnDelay: 0.3
 --- !u!1001 &509422420
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1061,6 +1076,32 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1709958613 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5465440333059805278, guid: 69bcf3ea4a05d154a8289010b139ad81, type: 3}
+  m_PrefabInstance: {fileID: 2063120072957586777}
+  m_PrefabAsset: {fileID: 0}
+--- !u!135 &1709958616
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709958613}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 64
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 191
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 4
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1750877517
 GameObject:
   m_ObjectHideFlags: 0
@@ -2095,6 +2136,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 387403657927500897, guid: 69bcf3ea4a05d154a8289010b139ad81, type: 3}
+      propertyPath: m_CollectSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 387403657927500897, guid: 69bcf3ea4a05d154a8289010b139ad81, type: 3}
+      propertyPath: m_GemLayer.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 414117464747255840, guid: 69bcf3ea4a05d154a8289010b139ad81, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -2302,6 +2351,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6294151828348989854, guid: 69bcf3ea4a05d154a8289010b139ad81, type: 3}
       insertIndex: -1
       addedObject: {fileID: 456924859}
+    - targetCorrespondingSourceObject: {fileID: 6294151828348989854, guid: 69bcf3ea4a05d154a8289010b139ad81, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 456924860}
+    - targetCorrespondingSourceObject: {fileID: 5465440333059805278, guid: 69bcf3ea4a05d154a8289010b139ad81, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1709958616}
   m_SourcePrefab: {fileID: 100100000, guid: 69bcf3ea4a05d154a8289010b139ad81, type: 3}
 --- !u!1001 &4255835130925167342
 PrefabInstance:
@@ -2318,6 +2373,10 @@ PrefabInstance:
     - target: {fileID: 1753539803468717291, guid: cfba2f6e3352fad428c2538f56c47ebd, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3251374642270101058, guid: cfba2f6e3352fad428c2538f56c47ebd, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6382743066324741566, guid: cfba2f6e3352fad428c2538f56c47ebd, type: 3}
       propertyPath: m_LocalPosition.x

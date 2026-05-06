@@ -52,7 +52,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   m_MoveSpeed: 3
   m_DeathParticles: {fileID: 7295410818338732598, guid: a2aa6ed16862f8c40ad1f98146b3422c, type: 3}
-  m_Gem: {fileID: 4527900738002941042, guid: 10355471598ca7940b1ddb1b2440953d, type: 3}
+  m_Gem: {fileID: 5281615192667678164, guid: 10355471598ca7940b1ddb1b2440953d, type: 3}
 --- !u!54 &6661020455128214887
 Rigidbody:
   m_ObjectHideFlags: 0

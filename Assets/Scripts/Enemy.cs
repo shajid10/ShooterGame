@@ -6,17 +6,17 @@ using UnityEngine.AI;
 public class Enemy : MonoBehaviour {
     [SerializeField] private float m_MoveSpeed = 3f;
     [SerializeField] private ParticleSystem m_DeathParticles;
-    [SerializeField] private GameObject m_Gem;
+    [SerializeField] private Gem m_Gem;
     private Vector3 _directionToPlayer;
 
     private NavMeshAgent _navAgent;
-    private Transform _player;
+    private Transform _playerTransform;
     private Rigidbody _rb;
     private EnemyFlash _enemyFlash;
     private HealthComponent _health;
 
     private void Start() {
-        _player = FindAnyObjectByType<Player>().transform;
+        _playerTransform = FindAnyObjectByType<Player>().transform;
         _enemyFlash = GetComponent<EnemyFlash>();
         _navAgent = GetComponent<NavMeshAgent>();
         _rb = GetComponent<Rigidbody>();
@@ -24,12 +24,12 @@ public class Enemy : MonoBehaviour {
         
         _navAgent.speed = m_MoveSpeed;
         
-        _health.OnDeath += HealthOnDeath;
+        _health.EnemyDeathEvent += OnEnemyDeathEvent;
     }
     
 
     private void Update() {
-        _navAgent.SetDestination(_player.position);
+        _navAgent.SetDestination(_playerTransform.position);
     }
 
     public void Hurt(int damage,  float knockback)
@@ -40,7 +40,7 @@ public class Enemy : MonoBehaviour {
         _health.ReduceHealth(damage);
     }
     
-    private void HealthOnDeath(object sender, EventArgs e)
+    private void OnEnemyDeathEvent(object sender, EventArgs e)
     {
         Instantiate(m_DeathParticles, transform.position, Quaternion.identity);
         Instantiate(m_Gem, transform.position, Quaternion.identity);

@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     private bool _shooting = false;
     private bool _hasTarget = false;
     private CharacterController _characterController;
+    private GemCollector _gemCollector;
     
     private static readonly int HasTarget = Animator.StringToHash("hasTarget");
     private static readonly int IsMoving = Animator.StringToHash("isMoving");
@@ -31,6 +32,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         _characterController = GetComponent<CharacterController>();
+        _gemCollector = GetComponent<GemCollector>();
     }
     
     private void Update() {
@@ -99,6 +101,11 @@ public class Player : MonoBehaviour
     public Gun GetGun()
     {
         return m_Gun;
+    }
+
+    public GemCollector GetGemCollector()
+    {
+        return _gemCollector;
     }
 }
 

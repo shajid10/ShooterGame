@@ -13,20 +13,25 @@ namespace UI
         private GemCollector _gemCollector;
         private Player _player;
 
+        private Tweener _textTweener;
+
         private void Start()
         {
             _player = Player.Instance;
-            _gemCollector = _player.GetComponent<GemCollector>();
+            _gemCollector = _player.GetGemCollector();
             
-            _gemCollector.OnGemCountChanged += GemCollectorOnOnGemCountChanged;
+            _gemCollector.GemCountChangedEvent += OnGemCountChanged;
             m_Text.text = "0";
         }
 
-        private void GemCollectorOnOnGemCountChanged(object sender, EventArgs e)
+        private void OnGemCountChanged()
         {
+            print("received gem count");
             long gemCount = _gemCollector.GetGemCount();
             m_Text.text = Helper.GetRoundUpNumbersAsString(gemCount);
-            m_Text.transform.DOPunchScale(new Vector3(0.2f, 0.2f, 0.2f), 0.3f, 1);
+            
+            _textTweener?.Kill();
+            _textTweener = m_Text.transform.DOShakeScale(0.2f, Vector3.one * 0.5f).SetLink(gameObject);
         }
     }
 }

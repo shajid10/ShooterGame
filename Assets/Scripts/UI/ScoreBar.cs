@@ -15,10 +15,10 @@ namespace UI
         private void Start()
         {
             _gemCollector = Player.Instance.GetComponent<GemCollector>();
-            _gemCollector.OnGemCountChanged += GemCollectorOnOnGemCountChanged;
+            _gemCollector.GemCountChangedEvent += OnGemCountChanged;
         }
 
-        private void GemCollectorOnOnGemCountChanged(object sender, EventArgs e)
+        private void OnGemCountChanged()
         {
             long gemCount = _gemCollector.GetGemCount();
             float fillPercentage = (gemCount%m_ScoreThreshold) / (float)m_ScoreThreshold;

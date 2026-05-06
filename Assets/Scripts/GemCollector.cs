@@ -1,7 +1,6 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
-using TSF.Utilities;
-using UnityEditor;
 
 public class GemCollector : MonoBehaviour
 {
@@ -10,34 +9,48 @@ public class GemCollector : MonoBehaviour
     [SerializeField] private float m_CollectSpeed;
     [SerializeField] private LayerMask m_GemLayer;
     
-    private Collider[] _hits;
+    private List<Gem> _nearbyGems;
     
     private long _gemCount = 0;
     
-    public event EventHandler OnGemCountChanged;
-    
-    private void Start() {}
+    public event Action GemCountChangedEvent;
+
+    private void Start()
+    {
+        _nearbyGems = new List<Gem>();
+    }
 
     private void FixedUpdate()
     {
-        _hits = Physics.OverlapSphere(transform.position, m_CollectRadius, m_GemLayer);
         Attract();
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        print(other.gameObject.name);
+        Gem gem = other.gameObject.GetComponentInParent<Gem>();
+        if (_nearbyGems.Contains(gem)) return;
+        _nearbyGems.Add(gem);
+    }
+    
     private void Attract()
     {
-        foreach (Collider hit in _hits)
+        if (_nearbyGems.Count <= 0) return;
+        for (int i = _nearbyGems.Count - 1; i >= 0; i--)
         {
-            Gem gem = hit.gameObject.GetComponentInParent<Gem>();
-            if (gem)
+            Gem gem = _nearbyGems[i];
+            if (!gem)
             {
-                gem.AttractTo(transform);
-                if (Vector3.Distance(transform.position, gem.transform.position) <= m_CollectDistance)
-                {
-                    _gemCount += 100;
-                    OnGemCountChanged?.Invoke(this, EventArgs.Empty);
-                    Destroy(gem.gameObject);
-                }
+                _nearbyGems.RemoveAt(i);
+                continue;
+            }
+            gem.AttractTo(transform);
+            if (Vector3.Distance(transform.position, gem.transform.position) <= m_CollectDistance)
+            {
+                _gemCount += 100;
+                GemCountChangedEvent?.Invoke();
+                _nearbyGems.RemoveAt(i);
+                Destroy(gem.gameObject);
             }
         }
     }
@@ -47,6 +60,6 @@ public class GemCollector : MonoBehaviour
     public void ReduceGemCount(int amount)
     {
         _gemCount -= amount;
-        OnGemCountChanged?.Invoke(this, EventArgs.Empty);
+        GemCountChangedEvent?.Invoke();
     }
 }

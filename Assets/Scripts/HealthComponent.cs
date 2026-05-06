@@ -6,7 +6,7 @@ public class HealthComponent : MonoBehaviour
     [SerializeField] private int m_Health;
     [SerializeField] private int m_MaxHealth;
     public event EventHandler OnHealthChanged;
-    public event EventHandler OnDeath;
+    public event EventHandler EnemyDeathEvent;
 
     public void ReduceHealth(int amount)
     {
@@ -14,7 +14,7 @@ public class HealthComponent : MonoBehaviour
         OnHealthChanged?.Invoke(this, EventArgs.Empty);
         if (m_Health <= 0)
         {
-            OnDeath?.Invoke(this, EventArgs.Empty);
+            EnemyDeathEvent?.Invoke(this, EventArgs.Empty);
         }
     }
     
@@ -26,5 +26,14 @@ public class HealthComponent : MonoBehaviour
 
     public int GetHealth() { return m_Health; }
     public int GetMaxHealth() { return m_MaxHealth; }
+
+    public void SetMaxHealth(int maxHealth)
+    {
+        m_MaxHealth = maxHealth;
+        if (m_Health > m_MaxHealth)
+        {
+            m_Health = m_MaxHealth;
+        }
+    }
     public float GetHealthPercentage() { return (float)m_Health / m_MaxHealth; }
 }
