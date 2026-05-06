@@ -21,6 +21,7 @@ public class Turret : MonoBehaviour
         HandleShooting();
     }
     
+    //extract these functions and make resuable components
     private void FindNearestEnemy() {
         Collider[] hits = Physics.OverlapSphere(transform.position, m_DetectionRadius);
 

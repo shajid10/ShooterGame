@@ -26,7 +26,6 @@ namespace UI
 
         private void OnGemCountChanged()
         {
-            print("received gem count");
             long gemCount = _gemCollector.GetGemCount();
             m_Text.text = Helper.GetRoundUpNumbersAsString(gemCount);
             

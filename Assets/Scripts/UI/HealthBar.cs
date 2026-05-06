@@ -13,10 +13,10 @@ namespace UI
 
         private void Start()
         {
-            m_HealthComponent.OnHealthChanged += HealthComponentOnOnHealthChanged;
+            m_HealthComponent.HealthChangedEvent += OnHealthChanged;
         }
 
-        private void HealthComponentOnOnHealthChanged(object sender, EventArgs e)
+        private void OnHealthChanged(HealthComponent healthComponent)
         {
             if (m_FillImage != null)
                 m_FillImage.DOFillAmount(m_HealthComponent.GetHealthPercentage(), m_FillDuration).SetEase(Ease.InOutSine).SetLink(gameObject);

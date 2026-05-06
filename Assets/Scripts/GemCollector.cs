@@ -20,6 +20,8 @@ public class GemCollector : MonoBehaviour
         _nearbyGems = new List<Gem>();
     }
 
+    
+    //to do: Replace with ontrigger enter events
     private void FixedUpdate()
     {
         Attract();
