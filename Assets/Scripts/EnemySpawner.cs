@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject m_EnemyPrefab;
+    [SerializeField] private Enemy m_EnemyPrefab;
     [SerializeField] private List<Transform> m_SpawnPoints;
 
     [SerializeField] private float m_TimeInterval = 10f;
@@ -27,6 +27,7 @@ public class EnemySpawner : MonoBehaviour
         int selectedSpawnPointIndex = Random.Range(0, m_SpawnPoints.Count);
         Transform selectedSpawnPoint = m_SpawnPoints[selectedSpawnPointIndex];
 
-        GameObject spawnedEnemy = Instantiate(m_EnemyPrefab, selectedSpawnPoint.position, selectedSpawnPoint.rotation);
+        Enemy enemy = Instantiate(m_EnemyPrefab, selectedSpawnPoint.position, selectedSpawnPoint.rotation);
+        enemy.SetMaxHealth(Random.Range(50, 150));
     }
 }

@@ -18,6 +18,8 @@ public class GemCollector : MonoBehaviour
     
     private void Start() {}
 
+    
+    //to do: Replace with ontrigger enter events
     private void FixedUpdate()
     {
         _hits = Physics.OverlapSphere(transform.position, m_CollectRadius, m_GemLayer);

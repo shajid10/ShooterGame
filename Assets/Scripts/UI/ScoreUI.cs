@@ -16,6 +16,7 @@ namespace UI
         private void Start()
         {
             _player = Player.Instance;
+            //fix
             _gemCollector = _player.GetComponent<GemCollector>();
             
             _gemCollector.OnGemCountChanged += GemCollectorOnOnGemCountChanged;

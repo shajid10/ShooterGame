@@ -12,6 +12,7 @@ namespace UI
         
         private GemCollector _gemCollector;
 
+        //change event and params
         private void Start()
         {
             _gemCollector = Player.Instance.GetComponent<GemCollector>();

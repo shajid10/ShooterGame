@@ -5,7 +5,7 @@ public class Gun : MonoBehaviour
 {
     public event EventHandler OnShoot;
     
-    [SerializeField] private GameObject m_BulletPrefab;
+    [SerializeField] private GameObject m_BulletPrefab; //replace GO refrence
     [SerializeField] private Transform m_BulletSpawnPoint;
     [SerializeField] private float m_TimeInterval = 0.8f;
     [SerializeField] private ParticleSystem m_MuzzleFlash;

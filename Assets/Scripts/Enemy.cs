@@ -47,4 +47,9 @@ public class Enemy : MonoBehaviour {
         m_DeathParticles.Play();
         Destroy(gameObject);
     }
+
+    public void SetMaxHealth(int maxHealth)
+    {
+        _health.SetMaxHealth(maxHealth);
+    }
 }
