@@ -3,7 +3,6 @@ using UnityEngine;
 public class Turret : MonoBehaviour
 {
     [SerializeField] private float m_RotateSpeed = 10f;
-    [SerializeField] private float m_DetectionRadius = 3f;
     
     private Transform _currentTarget = null;
     private Gun _gun;

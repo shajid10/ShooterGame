@@ -2,20 +2,22 @@ using UnityEngine;
 
 public class Gem : MonoBehaviour
 {
-    [SerializeField] private int m_GemValue = 100;
-    [SerializeField] private float m_MoveSpeed = 10f;
     [SerializeField] private float m_Acceleration = 25f;
+    [SerializeField] private GemSO m_GemSO;
 
+    private int _gemValue;
     private Transform _target;
     private float _currentSpeed;
     
     private Rigidbody _rigidbody;
 
-    public int GemValue => m_GemValue;
+    public int GemValue => _gemValue;
 
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
+        
+        _gemValue = m_GemSO.Value; 
     }
 
     public void AttractTo(Transform target)

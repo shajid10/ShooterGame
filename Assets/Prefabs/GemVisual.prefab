@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7080828966393723962}
+  - component: {fileID: 2283903060986117553}
   m_Layer: 6
   m_Name: GemVisual
   m_TagString: Gem
@@ -32,6 +33,19 @@ Transform:
   - {fileID: 3636061784576995668}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2283903060986117553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4527900738002941042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00b2ac9622d1f2640906099795e10268, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GemVisual
+  m_GemSo: {fileID: 11400000, guid: 2ec11ec6e4e932441bbc0d760e5585ce, type: 2}
 --- !u!1 &6967299775880065290
 GameObject:
   m_ObjectHideFlags: 0

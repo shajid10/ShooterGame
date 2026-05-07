@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class GemCollector : MonoBehaviour
 {
-    [SerializeField] private float m_CollectRadius = 5f;
     [SerializeField] private float m_CollectDistance = 0.4f;
     [SerializeField] private float m_CollectSpeed;
     [SerializeField] private LayerMask m_GemLayer;
@@ -27,7 +26,6 @@ public class GemCollector : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        print(other.gameObject.name);
         Gem gem = other.gameObject.GetComponentInParent<Gem>();
         if (_nearbyGems.Contains(gem)) return;
         _nearbyGems.Add(gem);
@@ -48,7 +46,6 @@ public class GemCollector : MonoBehaviour
             if (Vector3.Distance(transform.position, gem.transform.position) <= m_CollectDistance)
             {
                 _gemCount += gem.GemValue;
-                print("invoking event");
                 GemCountChangedEvent?.Invoke();
                 _nearbyGems.RemoveAt(i);
                 Destroy(gem.gameObject);

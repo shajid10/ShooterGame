@@ -82,7 +82,9 @@ MonoBehaviour:
   m_TurretCost: 300
   m_FillDuration: 2
   m_TurretSpawnPoint: {fileID: 7590919405696452072}
-  m_TurretPrefab: {fileID: 4982691694469632373, guid: da313ddde7ae5f549af53fefdec8be27, type: 3}
+  m_TurretPrefab: {fileID: 9014353309055630983, guid: da313ddde7ae5f549af53fefdec8be27, type: 3}
+  m_GemVisualPrefab: {fileID: 2283903060986117553, guid: 0680b4405ebd5c442a95f03a5ec8c324, type: 3}
+  m_SpawnDelay: 0.3
 --- !u!135 &3251374642270101058
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -98,11 +100,11 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1.52
+  m_Radius: 1.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2332223671609227738
 GameObject:

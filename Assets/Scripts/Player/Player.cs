@@ -42,7 +42,7 @@ public class Player : MonoBehaviour
     }
 
     private void HandleMovement() {
-        Vector2 inputVector = InputController.Instance.GetInputVector();
+        Vector2 inputVector = InputController.Instance.GetInputVectorNormalized();
         if (inputVector.x != 0 || inputVector.y != 0) {
             m_Animator.SetBool(IsMoving, true);
         } else {
@@ -88,6 +88,16 @@ public class Player : MonoBehaviour
     public GemCollector GetGemCollector()
     {
         return _gemCollector;
+    }
+
+    public long GetGemCount()
+    {
+        return _gemCollector.GetGemCount();
+    }
+
+    public void ReduceGemCount(int amount)
+    {
+        _gemCollector.ReduceGemCount(amount);
     }
 }
 

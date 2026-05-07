@@ -36,7 +36,7 @@ namespace UI
             long gemCount = _gemCollector.GetGemCount();
             m_Text.text = Helper.GetRoundUpNumbersAsString(gemCount);
             
-            _textTweener?.Kill();
+            _textTweener.Kill();
             _textTweener = m_Text.transform.DOShakeScale(0.2f, Vector3.one * 0.5f).SetLink(gameObject);
         }
     }
