@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using UnityEngine;
 
@@ -9,13 +10,22 @@ public class GemSpawnerPlayer : MonoBehaviour
         // Spawn gem and jumptween to dump zone using DOTween
         // OnTweenComplete invoke an event to let dumpzone know
         // when spawning gem, 
-        [SerializeField] private GemVisual m_GemVisual;
+        [SerializeField] private GameObject m_GemVisual;
+        [SerializeField] private GemSO m_GemSo;
+        [SerializeField] private float m_SpawnInterval = 0.3f;
+        
+        public event Action<TurretBuy> GemDumpedEvent;
         
         private bool _hasTargetZone = false;
         private TurretBuy _turretBuyZone;
         
-        private float _spawnInterval = 0.3f;
         private float _timeElapsed = 0f;
+        private Player _player;
+
+        private void Start()
+        {
+            _player = Player.Instance;
+        }
 
         // =================================== ON TRIGGER ==================================
         
@@ -43,9 +53,10 @@ public class GemSpawnerPlayer : MonoBehaviour
             if (_hasTargetZone)
             {
                 _timeElapsed += Time.deltaTime;
-                if (_timeElapsed >= _spawnInterval)
+                if (_timeElapsed >= m_SpawnInterval)
                 {
-                    SpawnGem();
+                    if (CanSpawnGem())
+                        SpawnGem();
                     _timeElapsed = 0f;
                 }
             }
@@ -53,10 +64,25 @@ public class GemSpawnerPlayer : MonoBehaviour
 
         private void SpawnGem()
         {
+            _player.ReduceGemCount(m_GemSo.Value);
+            
             GameObject gemVisual = Instantiate(m_GemVisual.gameObject, transform.position, Quaternion.identity);
             gemVisual.transform.DOJump(_turretBuyZone.transform.position, 3f, 1, 0.5f).OnComplete(() =>
             {
+                if (_turretBuyZone)
+                    GemDumpedEvent?.Invoke(_turretBuyZone);
                 Destroy(gemVisual);
             }).SetLink(gemVisual);
+        }
+
+        private bool CanSpawnGem()
+        {
+            if (_player.GetGemCount() >= m_GemSo.Value 
+                && _turretBuyZone)
+            {
+                return true;
+            }
+
+            return false;
         }
 }

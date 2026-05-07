@@ -300,7 +300,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6382743066324741566, guid: cfba2f6e3352fad428c2538f56c47ebd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.49319
+      value: -12.49319
       objectReference: {fileID: 0}
     - target: {fileID: 6382743066324741566, guid: cfba2f6e3352fad428c2538f56c47ebd, type: 3}
       propertyPath: m_LocalRotation.w
@@ -365,7 +365,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6382743066324741566, guid: cfba2f6e3352fad428c2538f56c47ebd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.49319
+      value: -12.49319
       objectReference: {fileID: 0}
     - target: {fileID: 6382743066324741566, guid: cfba2f6e3352fad428c2538f56c47ebd, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1076,7 +1076,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6ebb03b693816f4e859fa4c544d1245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GemSpawnerPlayer
-  m_GemVisual: {fileID: 2283903060986117553, guid: 0680b4405ebd5c442a95f03a5ec8c324, type: 3}
+  m_GemVisual: {fileID: 4527900738002941042, guid: 0680b4405ebd5c442a95f03a5ec8c324, type: 3}
+  m_GemSo: {fileID: 11400000, guid: 2ec11ec6e4e932441bbc0d760e5585ce, type: 2}
+  m_SpawnInterval: 0.3
 --- !u!1 &535928157
 GameObject:
   m_ObjectHideFlags: 0

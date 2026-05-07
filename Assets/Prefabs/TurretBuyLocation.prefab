@@ -79,6 +79,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cc03dfcafd90254ca58ff446b7525fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TurretBuy
+  m_TurretPrice: 300
+  m_CostText: {fileID: 1685733654743944227}
+  m_TurretPrefab: {fileID: 9014353309055630983, guid: da313ddde7ae5f549af53fefdec8be27, type: 3}
 --- !u!135 &3251374642270101058
 SphereCollider:
   m_ObjectHideFlags: 0
