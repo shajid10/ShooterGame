@@ -16,6 +16,11 @@ namespace UI
             m_HealthComponent.HealthChangedEvent += OnHealthChanged;
         }
 
+        private void OnDestroy()
+        {
+            m_HealthComponent.HealthChangedEvent -= OnHealthChanged;
+        }
+        
         private void OnHealthChanged()
         {
             if (m_FillImage != null)

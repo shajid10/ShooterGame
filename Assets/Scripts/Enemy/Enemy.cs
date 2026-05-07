@@ -24,7 +24,7 @@ public class Enemy : MonoBehaviour {
         
         _navAgent.speed = m_MoveSpeed;
         
-        _health.EnemyDeathEvent += OnEnemyDeathEvent;
+        _health.EnemyDeathEvent += OnEnemyDeath;
     }
     
 
@@ -40,7 +40,7 @@ public class Enemy : MonoBehaviour {
         _health.ReduceHealth(damage);
     }
     
-    private void OnEnemyDeathEvent()
+    private void OnEnemyDeath()
     {
         Instantiate(m_DeathParticles, transform.position, Quaternion.identity);
         Instantiate(m_Gem, transform.position, Quaternion.identity);
@@ -51,5 +51,10 @@ public class Enemy : MonoBehaviour {
     public void SetMaxHealth(int maxHealth)
     {
         _health.SetMaxHealth(maxHealth);
+    }
+
+    private void OnDestroy()
+    {
+        _health.EnemyDeathEvent -= OnEnemyDeath;
     }
 }

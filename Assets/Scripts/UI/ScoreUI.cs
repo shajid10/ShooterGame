@@ -25,6 +25,11 @@ namespace UI
             m_Text.text = "0";
         }
 
+        private void OnDestroy()
+        {
+            _gemCollector.GemCountChangedEvent -= OnGemCountChanged;
+        }
+
         private void OnGemCountChanged()
         {
             print("gem count changed");

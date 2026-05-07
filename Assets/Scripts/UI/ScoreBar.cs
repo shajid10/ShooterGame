@@ -19,6 +19,11 @@ namespace UI
             _gemCollector.GemCountChangedEvent += OnGemCountChanged;
         }
 
+        private void OnDestroy()
+        {
+            _gemCollector.GemCountChangedEvent -= OnGemCountChanged;
+        }
+
         private void OnGemCountChanged()
         {
             long gemCount = _gemCollector.GetGemCount();

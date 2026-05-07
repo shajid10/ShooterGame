@@ -5,17 +5,16 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private float m_MoveSpeed = 7f;
     [SerializeField] private float m_RotateSpeed = 10f;
-    [SerializeField] private float m_DetectionRadius = 2f;
 
     [SerializeField] private Gun m_Gun;
     [SerializeField] private Animator m_Animator;
-    [SerializeField] private DynamicJoystick m_DynamicJoystick;
 
     private Transform _currentTarget = null;
     private bool _shooting = false;
     private bool _hasTarget = false;
     private CharacterController _characterController;
     private GemCollector _gemCollector;
+    private EnemyDetector _enemyDetector;
     
     private static readonly int HasTarget = Animator.StringToHash("hasTarget");
     private static readonly int IsMoving = Animator.StringToHash("isMoving");
@@ -33,22 +32,22 @@ public class Player : MonoBehaviour
     {
         _characterController = GetComponent<CharacterController>();
         _gemCollector = GetComponentInChildren<GemCollector>();
+        _enemyDetector = GetComponentInChildren<EnemyDetector>();
     }
     
     private void Update() {
         HandleMovement();
-        FindNearestEnemy();
+        _currentTarget = _enemyDetector.GetNearestEnemy();
         HandleShooting();
     }
 
     private void HandleMovement() {
-        Vector2 inputVector = new Vector2(m_DynamicJoystick.Horizontal, m_DynamicJoystick.Vertical);
+        Vector2 inputVector = InputController.Instance.GetInputVector();
         if (inputVector.x != 0 || inputVector.y != 0) {
             m_Animator.SetBool(IsMoving, true);
         } else {
             m_Animator.SetBool(IsMoving, false);
         }
-        inputVector.Normalize();
 
         Vector3 moveDir = new Vector3(inputVector.x, 0, inputVector.y);
         Vector3 localMove = transform.InverseTransformDirection(moveDir);
@@ -56,26 +55,9 @@ public class Player : MonoBehaviour
         m_Animator.SetFloat(X, localMove.x);
         m_Animator.SetFloat(Y, localMove.z);
 
-        //transform.position += moveDir * (m_MoveSpeed * Time.deltaTime);
         _characterController.Move(moveDir * (m_MoveSpeed * Time.deltaTime));
         if (!_shooting) {
             transform.forward = Vector3.Slerp(transform.forward, moveDir, Time.deltaTime * m_RotateSpeed);
-        }
-    }
-
-    private void FindNearestEnemy() {
-        Collider[] hits = Physics.OverlapSphere(transform.position, m_DetectionRadius);
-
-        float closestDistance = Mathf.Infinity;
-
-        foreach (Collider hit in hits)
-        {
-            if (!hit.CompareTag("Enemy")) continue;
-            float distance = Vector3.Distance(transform.position, hit.transform.position);
-
-            if (!(distance < closestDistance)) continue;
-            _currentTarget = hit.transform;
-            closestDistance = distance;
         }
     }
 

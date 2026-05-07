@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.XR;
 
 public class Turret : MonoBehaviour
 {
@@ -9,34 +7,20 @@ public class Turret : MonoBehaviour
     
     private Transform _currentTarget = null;
     private Gun _gun;
+    private EnemyDetector _enemyDetector;
 
     private void Start()
     {
         _gun = GetComponent<Gun>();
+        _enemyDetector = GetComponentInChildren<EnemyDetector>();
     }
 
     private void FixedUpdate()
     {
-        FindNearestEnemy();
+        _currentTarget = _enemyDetector.GetNearestEnemy();
         HandleShooting();
     }
     
-    //extract these functions and make resuable components
-    private void FindNearestEnemy() {
-        Collider[] hits = Physics.OverlapSphere(transform.position, m_DetectionRadius);
-
-        float closestDistance = Mathf.Infinity;
-
-        foreach (Collider hit in hits)
-        {
-            if (!hit.CompareTag("Enemy")) continue;
-            float distance = Vector3.Distance(transform.position, hit.transform.position);
-
-            if (!(distance < closestDistance)) continue;
-            _currentTarget = hit.transform;
-            closestDistance = distance;
-        }
-    }
 
     private void HandleShooting() {
         if (_currentTarget) {

@@ -18,7 +18,6 @@ public class GemCollector : MonoBehaviour
     private void Start()
     {
         _nearbyGems = new List<Gem>();
-        Debug.Log("Collector instance: " + GetInstanceID());
     }
     
     private void FixedUpdate()

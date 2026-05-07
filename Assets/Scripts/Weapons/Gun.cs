@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
-    public event EventHandler OnShoot;
+    public event Action ShootEvent;
     
     [SerializeField] private GameObject m_BulletPrefab; //replace GO refrence
     [SerializeField] private Transform m_BulletSpawnPoint;
@@ -31,7 +31,7 @@ public class Gun : MonoBehaviour
     private void Shoot() {
         GameObject bulletInstance = Instantiate(m_BulletPrefab, m_BulletSpawnPoint.position, m_BulletSpawnPoint.rotation);
         m_MuzzleFlash.Play();
-        OnShoot?.Invoke(this, EventArgs.Empty);
+        ShootEvent?.Invoke();
     }
 
     public void SetShooting(bool shooting) {
