@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 284a712dda57943419a4f9f33f716f95, type: 3}
   m_Name: Gem
   m_EditorClassIdentifier: Assembly-CSharp::GemSO
-  Value: 100
+  m_Value: 100
