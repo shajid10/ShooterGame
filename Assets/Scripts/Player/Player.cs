@@ -35,6 +35,7 @@ public class Player : MonoBehaviour
         _enemyDetector = GetComponentInChildren<EnemyDetector>();
     }
     
+
     private void Update() {
         HandleMovement();
         _currentTarget = _enemyDetector.GetNearestEnemy();

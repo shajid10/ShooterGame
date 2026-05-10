@@ -11,12 +11,20 @@ public class GemCollector : MonoBehaviour
     private List<Gem> _nearbyGems;
     
     private long _gemCount;
+    private string _gemCountKey = "GemCount";
     
     public event Action GemCountChangedEvent;
 
+    private void Awake()
+    {
+        SetGemCount(SaveManager.LoadLong(_gemCountKey, 0));
+        print(_gemCount);
+    }
+    
     private void Start()
     {
         _nearbyGems = new List<Gem>();
+        GemCountChangedEvent?.Invoke();
     }
     
     private void FixedUpdate()
@@ -46,6 +54,7 @@ public class GemCollector : MonoBehaviour
             if (Vector3.Distance(transform.position, gem.transform.position) <= m_CollectDistance)
             {
                 _gemCount += gem.GemValue;
+                SaveManager.SaveLong(_gemCountKey, _gemCount);
                 GemCountChangedEvent?.Invoke();
                 _nearbyGems.RemoveAt(i);
                 Destroy(gem.gameObject);
@@ -55,6 +64,12 @@ public class GemCollector : MonoBehaviour
     
     public long  GetGemCount() {return _gemCount;}
 
+    public void SetGemCount(long gemCount)
+    {
+        _gemCount = gemCount; 
+        GemCountChangedEvent?.Invoke();
+    }
+    
     public void ReduceGemCount(int amount)
     {
         _gemCount -= amount;

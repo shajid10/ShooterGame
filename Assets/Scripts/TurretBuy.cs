@@ -16,9 +16,9 @@ public class TurretBuy : MonoBehaviour
         _objectName = gameObject.name;
         _saveKey = $"TurretPrice_{_objectName}";
         
-        if (PlayerPrefs.HasKey(_saveKey))
+        if (SaveManager.HasKey(_saveKey))
         {
-            if (PlayerPrefs.GetInt(_saveKey, 0) <= 0)
+            if (SaveManager.LoadInt(_saveKey, 0) <= 0)
             {
                 CompletePurchase();
                 return;
@@ -59,13 +59,12 @@ public class TurretBuy : MonoBehaviour
 
     private void SavePrice()
     {
-        PlayerPrefs.SetInt(_saveKey, m_TurretPrice);
-        PlayerPrefs.Save();
+        SaveManager.SaveInt(_saveKey, m_TurretPrice);
     }
 
     private void LoadPrice()
     {
-        m_TurretPrice = PlayerPrefs.GetInt(_saveKey, m_TurretPrice);
+        m_TurretPrice = SaveManager.LoadInt(_saveKey, m_TurretPrice);
         
     }
 

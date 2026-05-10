@@ -1,4 +1,3 @@
-using System;
 using TMPro;
 using UnityEngine;
 using TSF.Utilities;
@@ -19,10 +18,10 @@ namespace UI
         {
             _player = Player.Instance;
             _gemCollector = _player.GetGemCollector();
-            Debug.Log("UI connected to collector: " + _gemCollector.GetInstanceID());
             
             _gemCollector.GemCountChangedEvent += OnGemCountChanged;
             m_Text.text = "0";
+            UpdateUI();
         }
 
         private void OnDestroy()
@@ -32,12 +31,17 @@ namespace UI
 
         private void OnGemCountChanged()
         {
-            print("gem count changed");
+            print("gem counnt changed");
+            UpdateUI();
+        }
+
+        private void UpdateUI()
+        {
             long gemCount = _gemCollector.GetGemCount();
             m_Text.text = Helper.GetRoundUpNumbersAsString(gemCount);
             
-            _textTweener.Kill();
-            _textTweener = m_Text.transform.DOShakeScale(0.2f, Vector3.one * 0.5f).SetLink(gameObject);
+            _textTweener?.Complete();
+            _textTweener = m_Text.transform.DOPunchScale(Vector3.one * 0.5f, 0.2f).SetLink(gameObject);
         }
     }
 }
