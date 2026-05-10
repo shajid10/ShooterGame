@@ -8,7 +8,7 @@ public class GemVisual : MonoBehaviour
 
     private void Start()
     {
-        _gemValue = m_GemSo.Value;
+        _gemValue = m_GemSo.m_Value;
     }
     
     public int GetGemValue() => _gemValue;

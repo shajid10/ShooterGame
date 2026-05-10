@@ -64,7 +64,7 @@ public class GemSpawnerPlayer : MonoBehaviour
 
         private void SpawnGem()
         {
-            _player.ReduceGemCount(m_GemSo.Value);
+            _player.ReduceGemCount(m_GemSo.m_Value);
             
             GameObject gemVisual = Instantiate(m_GemVisual.gameObject, transform.position, Quaternion.identity);
             gemVisual.transform.DOJump(_turretBuyZone.transform.position, 3f, 1, 0.5f).OnComplete(() =>
@@ -77,7 +77,7 @@ public class GemSpawnerPlayer : MonoBehaviour
 
         private bool CanSpawnGem()
         {
-            if (_player.GetGemCount() >= m_GemSo.Value 
+            if (_player.GetGemCount() >= m_GemSo.m_Value 
                 && _turretBuyZone)
             {
                 return true;

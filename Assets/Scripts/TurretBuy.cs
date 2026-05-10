@@ -8,12 +8,39 @@ public class TurretBuy : MonoBehaviour
     
     private GemSpawnerPlayer _gemSpawnerPlayer;
     
+    private string _objectName;
+    private string _saveKey;
+
+    private void Awake()
+    {
+        _objectName = gameObject.name;
+        _saveKey = $"TurretPrice_{_objectName}";
+        
+        if (PlayerPrefs.HasKey(_saveKey))
+        {
+            if (PlayerPrefs.GetInt(_saveKey, 0) <= 0)
+            {
+                CompletePurchase();
+                return;
+            }
+        }
+        else
+        {
+            SavePrice();
+        }
+        
+        LoadPrice();
+        UpdateUI();
+    }
+    
+    
     private void Start()
     {
+        
         _gemSpawnerPlayer = Player.Instance.GetComponentInChildren<GemSpawnerPlayer>();
         _gemSpawnerPlayer.GemDumpedEvent += OnGemSpawnerGemDumped;
         
-        m_CostText.text = m_TurretPrice.ToString();
+        UpdateUI();
     }
 
     private void OnGemSpawnerGemDumped(TurretBuy obj)
@@ -21,12 +48,35 @@ public class TurretBuy : MonoBehaviour
         if (this == obj)
         {
             m_TurretPrice -= 100;
+            SavePrice();
             if (m_TurretPrice <= 0)
             {
-                Instantiate(m_TurretPrefab, transform.position, transform.rotation);
-                Destroy(gameObject);
+                CompletePurchase();
             }
-            m_CostText.text = m_TurretPrice.ToString();
+            UpdateUI();
         }
+    }
+
+    private void SavePrice()
+    {
+        PlayerPrefs.SetInt(_saveKey, m_TurretPrice);
+        PlayerPrefs.Save();
+    }
+
+    private void LoadPrice()
+    {
+        m_TurretPrice = PlayerPrefs.GetInt(_saveKey, m_TurretPrice);
+        
+    }
+
+    private void CompletePurchase()
+    {
+        Instantiate(m_TurretPrefab, transform.position, transform.rotation);
+        Destroy(gameObject);
+    }
+
+    private void UpdateUI()
+    {
+        m_CostText.text = m_TurretPrice.ToString();
     }
 }

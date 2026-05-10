@@ -17,7 +17,7 @@ public class Gem : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody>();
         
-        _gemValue = m_GemSO.Value; 
+        _gemValue = m_GemSO.m_Value; 
     }
 
     public void AttractTo(Transform target)
