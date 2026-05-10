@@ -78,7 +78,8 @@ public class GemSpawnerPlayer : MonoBehaviour
         private bool CanSpawnGem()
         {
             if (_player.GetGemCount() >= m_GemSo.m_Value 
-                && _turretBuyZone)
+                && _turretBuyZone
+                   && _turretBuyZone.CanReceiveGem())
             {
                 return true;
             }

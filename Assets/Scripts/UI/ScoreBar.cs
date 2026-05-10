@@ -12,6 +12,8 @@ namespace UI
         
         private GemCollector _gemCollector;
 
+        private Tweener _barTweener;
+
         //change event and params
         private void Start()
         {
@@ -28,7 +30,9 @@ namespace UI
         {
             long gemCount = _gemCollector.GetGemCount();
             float fillPercentage = (gemCount%m_ScoreThreshold) / (float)m_ScoreThreshold;
-            transform.DOShakeScale(0.3f, new Vector3(0.2f, 0.2f, 0.2f)).SetLink(gameObject).SetLink(gameObject);
+            
+            _barTweener?.Complete();
+            _barTweener = transform.DOShakeScale(0.3f, new Vector3(0.2f, 0.2f, 0.2f)).SetLink(gameObject).SetLink(gameObject);
             if (m_FillImage)
                 m_FillImage.DOFillAmount(fillPercentage, 0.5f).SetEase(Ease.InOutSine).SetLink(gameObject);
         }

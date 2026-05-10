@@ -21,7 +21,9 @@ public static class SaveManager
 
     public static long LoadLong(string key, long defaultValue = 0)
     {
-        string loadedString = PlayerPrefs.GetString(key);
+        string loadedString = PlayerPrefs.GetString(key, "");
+        if (loadedString == "")
+            return defaultValue;
         return long.Parse(loadedString);
     }
     

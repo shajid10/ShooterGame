@@ -78,4 +78,9 @@ public class TurretBuy : MonoBehaviour
     {
         m_CostText.text = m_TurretPrice.ToString();
     }
+
+    public bool CanReceiveGem()
+    {
+        return m_TurretPrice > 0;
+    }
 }
