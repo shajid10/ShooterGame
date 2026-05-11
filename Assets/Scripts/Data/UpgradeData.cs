@@ -6,6 +6,7 @@ namespace ShooterGame.Data
     {
         [SerializeField] private string m_Name;
         [SerializeField] private int m_Damage;
-
+        [SerializeField] private long m_Cost;
+        [SerializeField] private int m_Level;
     }
 }

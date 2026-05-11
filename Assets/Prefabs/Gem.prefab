@@ -74,7 +74,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gem
   m_Acceleration: 25
-  m_GemSO: {fileID: 11400000, guid: 2ec11ec6e4e932441bbc0d760e5585ce, type: 2}
+  m_GemData: {fileID: 11400000, guid: 2ec11ec6e4e932441bbc0d760e5585ce, type: 2}
 --- !u!1 &6967299775880065290
 GameObject:
   m_ObjectHideFlags: 0

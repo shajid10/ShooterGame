@@ -1,9 +1,8 @@
-using System;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
-using DG.Tweening;
 
-namespace UI
+namespace ShooterGame.UI
 {
     public class HealthBar : MonoBehaviour
     {

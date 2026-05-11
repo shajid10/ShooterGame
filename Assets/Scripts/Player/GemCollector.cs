@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using ScriptableObjects;
 using UnityEngine;
@@ -11,30 +10,18 @@ public class GemCollector : MonoBehaviour
     
     [SerializeField] private PlayerData m_PlayerData;
     
-    private List<Gem> _nearbyGems;
+    private CurrencyManager _currencyManager;
     
-    private long _gemCount;
-    private readonly string _gemCountKey = "GemCount";
-
-    private void Awake()
-    {
-        SetGemCount(SaveManager.LoadLong(_gemCountKey, 0));
-    }
+    private List<Gem> _nearbyGems;
     
     private void Start()
     {
         _nearbyGems = new List<Gem>();
-        m_PlayerData.m_GemCount.SetValue(_gemCount);
         
-        m_PlayerData.m_GemCount.ValueChangedEvent += OnGemCountChanged;
+        _currencyManager = CurrencyManager.Instance;
     }
 
-    private void OnGemCountChanged()
-    {
-        print(_gemCount);
-        _gemCount = m_PlayerData.GetGemCount();
-        print(_gemCount);
-    }
+
 
     private void FixedUpdate()
     {
@@ -62,24 +49,15 @@ public class GemCollector : MonoBehaviour
             gem.AttractTo(transform);
             if (Vector3.Distance(transform.position, gem.transform.position) <= m_CollectDistance)
             {
-                _gemCount += gem.GemValue;
-                SetGemCount(_gemCount);
-                SaveManager.SaveLong(_gemCountKey, _gemCount);
+                _currencyManager.IncrementGemCount(gem.GemValue);
                 _nearbyGems.RemoveAt(i);
                 Destroy(gem.gameObject);
             }
         }
     }
-
-    public void SetGemCount(long gemCount)
-    {
-        m_PlayerData.m_GemCount.SetValue(gemCount);
-        _gemCount = gemCount; 
-    }
     
     public void ReduceGemCount(int amount)
     {
-        _gemCount -= amount;
-        m_PlayerData.m_GemCount.SetValue(_gemCount);
+        _currencyManager.DecrementGemCount(amount);
     }
 }

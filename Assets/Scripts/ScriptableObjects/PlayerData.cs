@@ -1,4 +1,3 @@
-using ScriptableObjects.VariableSO;
 using Sirenix.OdinInspector;
 using UnityEngine;
 

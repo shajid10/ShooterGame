@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0db624e942c36d45ad36650d407c699, type: 3}
-  m_Name: PlayerDamage
-  m_EditorClassIdentifier: Assembly-CSharp::ScriptableObjects.VariableSO.IntVariableSO
-  m_DefaultValue: 20
+  m_Script: {fileID: 11500000, guid: fc08ad58db2f22e478fe742e7e305771, type: 3}
+  m_Name: CurrencyData
+  m_EditorClassIdentifier: Assembly-CSharp::Data.CurrencyData
+  m_CurrentGemCount: 0

@@ -1,17 +1,20 @@
 using System;
 using DG.Tweening;
+using ShooterGame.Data;
 using UnityEngine;
 
-public class GemSpawnerPlayer : MonoBehaviour
+namespace ShooterGame.Spawners
 {
-    // player detects dump zone using OnTrigger
-    // Get position of dump zone
-    // At a certain interval
+    public class GemSpawnerPlayer : MonoBehaviour
+    {
+        // player detects dump zone using OnTrigger
+        // Get position of dump zone
+        // At a certain interval
         // Spawn gem and jumptween to dump zone using DOTween
         // OnTweenComplete invoke an event to let dumpzone know
         // when spawning gem, 
         [SerializeField] private GameObject m_GemVisual;
-        [SerializeField] private GemSO m_GemSo;
+        [SerializeField] private GemData m_GemData;
         [SerializeField] private float m_SpawnInterval = 0.3f;
         
         public event Action<TurretBuy> GemDumpedEvent;
@@ -64,7 +67,7 @@ public class GemSpawnerPlayer : MonoBehaviour
 
         private void SpawnGem()
         {
-            _player.ReduceGemCount(m_GemSo.m_Value);
+            _player.ReduceGemCount(m_GemData.m_Value);
             
             GameObject gemVisual = Instantiate(m_GemVisual.gameObject, transform.position, Quaternion.identity);
             gemVisual.transform.DOJump(_turretBuyZone.transform.position, 3f, 1, 0.5f).OnComplete(() =>
@@ -77,13 +80,14 @@ public class GemSpawnerPlayer : MonoBehaviour
 
         private bool CanSpawnGem()
         {
-            if (_player.GetGemCount() >= m_GemSo.m_Value 
+            if (_player.GetGemCount() >= m_GemData.m_Value 
                 && _turretBuyZone
-                   && _turretBuyZone.CanReceiveGem())
+                && _turretBuyZone.CanReceiveGem())
             {
                 return true;
             }
 
             return false;
         }
+    }
 }

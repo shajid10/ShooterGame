@@ -1,9 +1,11 @@
+using ScriptableObjects;
+using ShooterGame.Data;
 using UnityEngine;
 
 public class Gem : MonoBehaviour
 {
     [SerializeField] private float m_Acceleration = 25f;
-    [SerializeField] private GemSO m_GemSO;
+    [SerializeField] private GemData m_GemData;
 
     private int _gemValue;
     private Transform _target;
@@ -17,7 +19,7 @@ public class Gem : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody>();
         
-        _gemValue = m_GemSO.m_Value; 
+        _gemValue = m_GemData.m_Value; 
     }
 
     public void AttractTo(Transform target)

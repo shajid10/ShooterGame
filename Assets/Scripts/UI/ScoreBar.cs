@@ -3,7 +3,7 @@ using ScriptableObjects;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI
+namespace ShooterGame.UI
 {
     public class ScoreBar : MonoBehaviour
     {
@@ -17,13 +17,13 @@ namespace UI
 
         private void Start()
         {
-            //m_Player.m_GemCount.ValueChangedEvent += OnGemCountChanged;
+            CurrencyManager.CurrencyChangedEvent += OnGemCountChanged;
             UpdateUI();
         }
 
         private void OnDestroy()
         {
-            //m_Player.m_GemCount.ValueChangedEvent -= OnGemCountChanged;
+            CurrencyManager.CurrencyChangedEvent -= OnGemCountChanged;
         }
 
         private void OnGemCountChanged()
@@ -33,8 +33,8 @@ namespace UI
 
         private void UpdateUI()
         {
-            //long gemCount = m_Player.m_GemCount.Value;
-            float fillPercentage = (gemCount%m_ScoreThreshold) / (float)m_ScoreThreshold;
+            long gemCount = 200;
+            float fillPercentage = (CurrencyManager.Instance.GetCurrentGemCount() % m_ScoreThreshold) / (float)m_ScoreThreshold;
             
             _barTweener?.Complete();
             _barTweener = transform.DOShakeScale(0.3f, new Vector3(0.1f, 0.1f, 0.1f)).SetLink(gameObject).SetLink(gameObject);

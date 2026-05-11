@@ -1,10 +1,10 @@
-using TMPro;
-using UnityEngine;
-using TSF.Utilities;
 using DG.Tweening;
 using ScriptableObjects;
+using TMPro;
+using TSF.Utilities;
+using UnityEngine;
 
-namespace UI
+namespace ShooterGame.UI
 {
     public class ScoreUI : MonoBehaviour
     {
@@ -12,34 +12,32 @@ namespace UI
         
         [SerializeField] private PlayerData m_PlayerData;
         
-        private GemCollector _gemCollector;
-        //private Player _player;
-        
-
         private Tweener _textTweener;
+        private CurrencyManager _currencyManager;
 
         private void Start()
         {
-            m_PlayerData.m_GemCount.ValueChangedEvent += OnGemCountChanged;
+            //m_PlayerData.m_GemCount.ValueChangedEvent += OnGemCountChanged;
+            _currencyManager = CurrencyManager.Instance;
+            CurrencyManager.CurrencyChangedEvent += OnGemCountChanged;
+            
             m_Text.text = "0";
             UpdateUI();
         }
 
         private void OnDestroy()
         {
-            m_PlayerData.m_GemCount.ValueChangedEvent -= OnGemCountChanged;
+            CurrencyManager.CurrencyChangedEvent -= OnGemCountChanged;
         }
-
+        
         private void OnGemCountChanged()
         {
-            print("gem count changed");
             UpdateUI();
         }
 
         private void UpdateUI()
         {
-            long gemCount = m_PlayerData.m_GemCount.Value;
-            m_Text.text = Helper.GetRoundUpNumbersAsString(gemCount);
+            m_Text.text = Helper.GetRoundUpNumbersAsString(_currencyManager.GetCurrentGemCount());
             
             _textTweener?.Complete();
             _textTweener = m_Text.transform.DOPunchScale(Vector3.one * 0.5f, 0.2f).SetLink(gameObject);

@@ -1,5 +1,5 @@
 
-namespace UI
+namespace ShooterGame.UI
 {
     public class UpgradePanel : TSF.UI.UIPanelBase
     {

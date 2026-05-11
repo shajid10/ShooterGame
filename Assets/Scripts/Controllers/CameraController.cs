@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using DG.Tweening;
+using ShooterGame.Weapons;
 using Unity.Cinemachine;
 
 public class CameraController : MonoBehaviour

@@ -1,7 +1,6 @@
-using ScriptableObjects.VariableSO;
 using UnityEngine;
 
-namespace ScriptableObjects
+namespace ShooterGame.ScriptableObjects
 {
     [CreateAssetMenu(fileName = "ScriptableObjects/TurretSO", menuName = "TurretSO")]
     public class TurretData : ScriptableObject
@@ -12,9 +11,9 @@ namespace ScriptableObjects
         
         public void ResetValues()
         {
-            m_Level.Initialize();
-            m_UpgradePrice.Initialize();
-            m_Damage.Initialize();
+            m_Level = 1;
+            m_UpgradePrice = 200;
+            m_Damage = 30;
         }
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using ScriptableObjects;
+using ShooterGame.Weapons;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -38,13 +39,16 @@ public class Player : MonoBehaviour
         _enemyDetector = GetComponentInChildren<EnemyDetector>();
         
        //_gemCollector.GemCountChangedEvent += OnGemCountChanged;
-        m_PlayerData.m_Damage.ValueChangedEvent += OnDamageValueChanged;
-        m_PlayerData.m_Damage.Initialize();
+        // m_PlayerData.m_Damage.ValueChangedEvent += OnDamageValueChanged;
+        // m_PlayerData.m_Damage.Initialize();
+        
+        m_Gun.SetDamage(20);
     }
 
     private void OnDamageValueChanged()
     {
-        m_Gun.SetDamage(m_PlayerData.m_Damage.Value);
+        //m_Gun.SetDamage(m_PlayerData.m_Damage.Value);
+        m_Gun.SetDamage(20);
     }
 
 
@@ -100,7 +104,7 @@ public class Player : MonoBehaviour
 
     public long GetGemCount()
     {
-        return m_PlayerData.GetGemCount();
+        return CurrencyManager.Instance.GetCurrentGemCount();
     }
 
     public void ReduceGemCount(int amount)
