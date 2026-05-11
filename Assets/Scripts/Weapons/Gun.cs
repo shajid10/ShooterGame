@@ -32,7 +32,6 @@ public class Gun : MonoBehaviour
     }
 
     private void Shoot() {
-        print(m_BulletPrefab.name);
         Bullet bulletInstance = Instantiate(m_BulletPrefab, m_BulletSpawnPoint.position, m_BulletSpawnPoint.rotation);
         bulletInstance.SetBulletDamage(_damage);
         m_MuzzleFlash.Play();

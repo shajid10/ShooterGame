@@ -10,7 +10,7 @@ namespace UI
     {
         [SerializeField] private TextMeshProUGUI m_Text;
         
-        [SerializeField] private PlayerSO m_PlayerSO;
+        [SerializeField] private PlayerData m_PlayerData;
         
         private GemCollector _gemCollector;
         //private Player _player;
@@ -20,14 +20,14 @@ namespace UI
 
         private void Start()
         {
-            m_PlayerSO.m_GemCount.ValueChangedEvent += OnGemCountChanged;
+            m_PlayerData.m_GemCount.ValueChangedEvent += OnGemCountChanged;
             m_Text.text = "0";
             UpdateUI();
         }
 
         private void OnDestroy()
         {
-            m_PlayerSO.m_GemCount.ValueChangedEvent -= OnGemCountChanged;
+            m_PlayerData.m_GemCount.ValueChangedEvent -= OnGemCountChanged;
         }
 
         private void OnGemCountChanged()
@@ -38,7 +38,7 @@ namespace UI
 
         private void UpdateUI()
         {
-            long gemCount = m_PlayerSO.m_GemCount.Value;
+            long gemCount = m_PlayerData.m_GemCount.Value;
             m_Text.text = Helper.GetRoundUpNumbersAsString(gemCount);
             
             _textTweener?.Complete();

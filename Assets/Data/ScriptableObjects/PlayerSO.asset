@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlayerSO
   m_EditorClassIdentifier: Assembly-CSharp::ScriptableObjects.PlayerSO
   m_MaxPlayerHealth: 100
-  m_PlayerLevel: {fileID: 11400000, guid: e4b327bf85608794398e388518cb1b8c, type: 2}
-  m_PlayerDamage: {fileID: 11400000, guid: 841ea88360b89ad499d65f273c65145d, type: 2}
-  m_NextLevelPrice: {fileID: 11400000, guid: 96429603bf8fdc1479d43f4f01148ed4, type: 2}
+  m_Level: {fileID: 11400000, guid: e4b327bf85608794398e388518cb1b8c, type: 2}
+  m_Damage: {fileID: 11400000, guid: 841ea88360b89ad499d65f273c65145d, type: 2}
+  m_UpgradePrice: {fileID: 11400000, guid: 96429603bf8fdc1479d43f4f01148ed4, type: 2}
   m_GemCount: {fileID: 11400000, guid: 60aaf7d028846e049b0a2124d40c22a2, type: 2}

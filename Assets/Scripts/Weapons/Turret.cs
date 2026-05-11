@@ -9,7 +9,7 @@ public class Turret : MonoBehaviour
     private Gun _gun;
     private EnemyDetector _enemyDetector;
     
-    [SerializeField] private TurretSO m_TurretSO;
+    [SerializeField] private TurretData m_TurretData;
 
     private void Start()
     {
@@ -17,13 +17,13 @@ public class Turret : MonoBehaviour
         _enemyDetector = GetComponentInChildren<EnemyDetector>();
         
        //_gun.SetDamage(m_TurretSO.m_Damage.Value);
-        m_TurretSO.m_Damage.ValueChangedEvent += OnDamageValueChanged;
-        m_TurretSO.m_Damage.Initialize();   
+        m_TurretData.m_Damage.ValueChangedEvent += OnDamageValueChanged;
+        m_TurretData.m_Damage.Initialize();   
     }
 
     private void OnDamageValueChanged()
     {
-        _gun.SetDamage(m_TurretSO.m_Damage.Value);
+        _gun.SetDamage(m_TurretData.m_Damage.Value);
     }
 
     private void FixedUpdate()

@@ -9,14 +9,12 @@ public class GemCollector : MonoBehaviour
     [SerializeField] private float m_CollectSpeed;
     [SerializeField] private LayerMask m_GemLayer;
     
-    [SerializeField] private PlayerSO m_PlayerSO;
+    [SerializeField] private PlayerData m_PlayerData;
     
     private List<Gem> _nearbyGems;
     
     private long _gemCount;
-    private string _gemCountKey = "GemCount";
-    
-    public event Action GemCountChangedEvent;
+    private readonly string _gemCountKey = "GemCount";
 
     private void Awake()
     {
@@ -26,9 +24,18 @@ public class GemCollector : MonoBehaviour
     private void Start()
     {
         _nearbyGems = new List<Gem>();
-        GemCountChangedEvent?.Invoke();
+        m_PlayerData.m_GemCount.SetValue(_gemCount);
+        
+        m_PlayerData.m_GemCount.ValueChangedEvent += OnGemCountChanged;
     }
-    
+
+    private void OnGemCountChanged()
+    {
+        print(_gemCount);
+        _gemCount = m_PlayerData.GetGemCount();
+        print(_gemCount);
+    }
+
     private void FixedUpdate()
     {
         Attract();
@@ -56,27 +63,23 @@ public class GemCollector : MonoBehaviour
             if (Vector3.Distance(transform.position, gem.transform.position) <= m_CollectDistance)
             {
                 _gemCount += gem.GemValue;
+                SetGemCount(_gemCount);
                 SaveManager.SaveLong(_gemCountKey, _gemCount);
-                GemCountChangedEvent?.Invoke();
                 _nearbyGems.RemoveAt(i);
                 Destroy(gem.gameObject);
             }
         }
     }
-    
-    public long  GetGemCount() {return _gemCount;}
 
     public void SetGemCount(long gemCount)
     {
-        m_PlayerSO.m_GemCount.SetValue(gemCount);
+        m_PlayerData.m_GemCount.SetValue(gemCount);
         _gemCount = gemCount; 
-        //GemCountChangedEvent?.Invoke();
     }
     
     public void ReduceGemCount(int amount)
     {
         _gemCount -= amount;
-        m_PlayerSO.m_GemCount.SetValue(_gemCount);
-        //GemCountChangedEvent?.Invoke();
+        m_PlayerData.m_GemCount.SetValue(_gemCount);
     }
 }

@@ -10,20 +10,20 @@ namespace UI
         [SerializeField] private Image m_FillImage;
         [SerializeField] private int m_ScoreThreshold;
         
-        [SerializeField] private PlayerSO m_Player;
+        [SerializeField] private PlayerData m_Player;
         private GemCollector _gemCollector;
 
         private Tweener _barTweener;
 
         private void Start()
         {
-            m_Player.m_GemCount.ValueChangedEvent += OnGemCountChanged;
+            //m_Player.m_GemCount.ValueChangedEvent += OnGemCountChanged;
             UpdateUI();
         }
 
         private void OnDestroy()
         {
-            m_Player.m_GemCount.ValueChangedEvent -= OnGemCountChanged;
+            //m_Player.m_GemCount.ValueChangedEvent -= OnGemCountChanged;
         }
 
         private void OnGemCountChanged()
@@ -33,7 +33,7 @@ namespace UI
 
         private void UpdateUI()
         {
-            long gemCount = m_Player.m_GemCount.Value;
+            //long gemCount = m_Player.m_GemCount.Value;
             float fillPercentage = (gemCount%m_ScoreThreshold) / (float)m_ScoreThreshold;
             
             _barTweener?.Complete();

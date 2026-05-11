@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Gun m_Gun;
     [SerializeField] private Animator m_Animator;
 
-    [SerializeField] private PlayerSO m_PlayerSO;
+    [SerializeField] private PlayerData m_PlayerData;
 
     private Transform _currentTarget = null;
     private bool _shooting = false;
@@ -37,19 +37,14 @@ public class Player : MonoBehaviour
         _gemCollector = GetComponentInChildren<GemCollector>();
         _enemyDetector = GetComponentInChildren<EnemyDetector>();
         
-        _gemCollector.GemCountChangedEvent += OnGemCountChanged;
-        m_PlayerSO.m_PlayerDamage.ValueChangedEvent += OnDamageValueChanged;
-        m_PlayerSO.m_PlayerDamage.Initialize();
+       //_gemCollector.GemCountChangedEvent += OnGemCountChanged;
+        m_PlayerData.m_Damage.ValueChangedEvent += OnDamageValueChanged;
+        m_PlayerData.m_Damage.Initialize();
     }
 
     private void OnDamageValueChanged()
     {
-        m_Gun.SetDamage(m_PlayerSO.m_PlayerDamage.Value);
-    }
-
-    private void OnGemCountChanged()
-    {
-        m_PlayerSO.m_GemCount.SetValue(_gemCollector.GetGemCount());
+        m_Gun.SetDamage(m_PlayerData.m_Damage.Value);
     }
 
 
@@ -103,14 +98,9 @@ public class Player : MonoBehaviour
         return m_Gun;
     }
 
-    public GemCollector GetGemCollector()
-    {
-        return _gemCollector;
-    }
-
     public long GetGemCount()
     {
-        return _gemCollector.GetGemCount();
+        return m_PlayerData.GetGemCount();
     }
 
     public void ReduceGemCount(int amount)

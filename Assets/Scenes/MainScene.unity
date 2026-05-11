@@ -360,6 +360,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2854861682832138145, guid: ceee43898599e2a4a89ba53b268e5bbd, type: 3}
+      propertyPath: m_DisableWhenNotInteractable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3615101764362768884, guid: ceee43898599e2a4a89ba53b268e5bbd, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -549,7 +553,10 @@ PrefabInstance:
     - {fileID: 2204058334656029854, guid: ceee43898599e2a4a89ba53b268e5bbd, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7894287918005127690, guid: ceee43898599e2a4a89ba53b268e5bbd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2030655876}
   m_SourcePrefab: {fileID: 100100000, guid: ceee43898599e2a4a89ba53b268e5bbd, type: 3}
 --- !u!224 &166362294 stripped
 RectTransform:
@@ -1324,6 +1331,17 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.8, z: 0}
+--- !u!114 &483452127 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2634033227792407072, guid: ceee43898599e2a4a89ba53b268e5bbd, type: 3}
+  m_PrefabInstance: {fileID: 819628088}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1001 &509422420
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1824,6 +1842,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 607858647}
   m_CullTransparentMesh: 1
+--- !u!114 &730009999 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7917846736803545887, guid: ceee43898599e2a4a89ba53b268e5bbd, type: 3}
+  m_PrefabInstance: {fileID: 166362293}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!1 &730199207
 GameObject:
   m_ObjectHideFlags: 0
@@ -1917,6 +1946,10 @@ PrefabInstance:
     - target: {fileID: 2792327738398836558, guid: ceee43898599e2a4a89ba53b268e5bbd, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2854861682832138145, guid: ceee43898599e2a4a89ba53b268e5bbd, type: 3}
+      propertyPath: m_DisableWhenNotInteractable
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3615101764362768884, guid: ceee43898599e2a4a89ba53b268e5bbd, type: 3}
       propertyPath: m_Pivot.x
@@ -2107,8 +2140,22 @@ PrefabInstance:
     - {fileID: 2204058334656029854, guid: ceee43898599e2a4a89ba53b268e5bbd, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7894287918005127690, guid: ceee43898599e2a4a89ba53b268e5bbd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1787153057}
   m_SourcePrefab: {fileID: 100100000, guid: ceee43898599e2a4a89ba53b268e5bbd, type: 3}
+--- !u!114 &823153152 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7794833008751343201, guid: ceee43898599e2a4a89ba53b268e5bbd, type: 3}
+  m_PrefabInstance: {fileID: 819628088}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -2262,6 +2309,17 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 511
+--- !u!114 &1099492565 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2634033227792407072, guid: ceee43898599e2a4a89ba53b268e5bbd, type: 3}
+  m_PrefabInstance: {fileID: 166362293}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!4 &1169408238 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6382743066324741566, guid: cfba2f6e3352fad428c2538f56c47ebd, type: 3}
@@ -2348,6 +2406,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1233444062}
   m_CullTransparentMesh: 1
+--- !u!114 &1258489199 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 559044048882517592, guid: ceee43898599e2a4a89ba53b268e5bbd, type: 3}
+  m_PrefabInstance: {fileID: 819628088}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &1408696902
 GameObject:
   m_ObjectHideFlags: 0
@@ -2472,6 +2541,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1505094403 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7794833008751343201, guid: ceee43898599e2a4a89ba53b268e5bbd, type: 3}
+  m_PrefabInstance: {fileID: 166362293}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &1546084780
 GameObject:
   m_ObjectHideFlags: 0
@@ -2700,6 +2780,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1619609873}
   m_CullTransparentMesh: 1
+--- !u!114 &1650493157 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 559044048882517592, guid: ceee43898599e2a4a89ba53b268e5bbd, type: 3}
+  m_PrefabInstance: {fileID: 166362293}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &1683097648
 GameObject:
   m_ObjectHideFlags: 0
@@ -3409,11 +3500,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7587105}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1787153050 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7894287918005127690, guid: ceee43898599e2a4a89ba53b268e5bbd, type: 3}
+  m_PrefabInstance: {fileID: 819628088}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1787153051 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3615101764362768884, guid: ceee43898599e2a4a89ba53b268e5bbd, type: 3}
   m_PrefabInstance: {fileID: 819628088}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1787153057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1787153050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c31ecdc16878974ebdae72674f38735, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI.PlayerUpgradeButton
+  m_LevelText: {fileID: 1258489199}
+  m_DamageText: {fileID: 483452127}
+  m_CostText: {fileID: 823153152}
+  m_PlayerSO: {fileID: 11400000, guid: 7f58ecb5cd119694ca405cff8d03558b, type: 2}
+  m_BuyButton: {fileID: 2093544183}
 --- !u!1 &1797284602
 GameObject:
   m_ObjectHideFlags: 0
@@ -4079,6 +4192,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7587105}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2030655870 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7894287918005127690, guid: ceee43898599e2a4a89ba53b268e5bbd, type: 3}
+  m_PrefabInstance: {fileID: 166362293}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2030655876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2030655870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa706b175d694b24f9e547f61a4e8de1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TurretUpgradeButton
+  m_LevelText: {fileID: 1650493157}
+  m_DamageText: {fileID: 1099492565}
+  m_CostText: {fileID: 1505094403}
+  m_TurretSO: {fileID: 11400000, guid: 9ea630c85108194428db680014e1a3ef, type: 2}
+  m_PlayerSO: {fileID: 11400000, guid: 7f58ecb5cd119694ca405cff8d03558b, type: 2}
+  m_BuyButton: {fileID: 730009999}
 --- !u!1001 &2032177350
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4144,6 +4280,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cfba2f6e3352fad428c2538f56c47ebd, type: 3}
+--- !u!114 &2093544183 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7917846736803545887, guid: ceee43898599e2a4a89ba53b268e5bbd, type: 3}
+  m_PrefabInstance: {fileID: 819628088}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!1 &2110121852
 GameObject:
   m_ObjectHideFlags: 0
@@ -4157,6 +4304,7 @@ GameObject:
   - component: {fileID: 2110121856}
   - component: {fileID: 2110121855}
   - component: {fileID: 2110121854}
+  - component: {fileID: 2110121858}
   m_Layer: 5
   m_Name: OpenUpgradeMenuButton
   m_TagString: Untagged
@@ -4243,19 +4391,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2110121856}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1763887807}
-        m_TargetAssemblyTypeName: UI.UpgradePanel, Assembly-CSharp
-        m_MethodName: ToggleUpgradePanel
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &2110121856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4294,6 +4430,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2110121852}
   m_CullTransparentMesh: 1
+--- !u!114 &2110121858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2110121852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e55085796cdd0a47a47fc5ba2ce98ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI.UpgradeMenuButton
+  m_upgradePanel: {fileID: 1763887807}
 --- !u!1001 &135775878631713967
 PrefabInstance:
   m_ObjectHideFlags: 0

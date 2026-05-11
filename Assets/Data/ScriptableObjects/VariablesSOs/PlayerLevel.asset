@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0db624e942c36d45ad36650d407c699, type: 3}
   m_Name: PlayerLevel
   m_EditorClassIdentifier: Assembly-CSharp::IntVariableSO
-  m_DefaultValue: 0
+  m_DefaultValue: 1

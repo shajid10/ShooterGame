@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: TurretSO
   m_EditorClassIdentifier: Assembly-CSharp::ScriptableObjects.TurretSO
   m_Level: {fileID: 11400000, guid: 995f07e6f4b459645a901758f19025ab, type: 2}
-  m_UpgradePrice: {fileID: 11400000, guid: 96429603bf8fdc1479d43f4f01148ed4, type: 2}
+  m_UpgradePrice: {fileID: 11400000, guid: ec8e34d3dab85e043acfb653755e7de1, type: 2}
   m_Damage: {fileID: 11400000, guid: 1e47406abd6c7eb469d92497edc2780f, type: 2}
