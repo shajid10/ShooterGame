@@ -10,7 +10,7 @@ public class TurretBuy : MonoBehaviour
     
     private string _objectName;
     private string _saveKey;
-
+    // add serialized field for save key
     private void Awake()
     {
         _objectName = gameObject.name;

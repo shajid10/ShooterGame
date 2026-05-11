@@ -5,9 +5,10 @@ public class Bullet : MonoBehaviour {
     [SerializeField] private float m_Speed = 12f;
     [SerializeField] private float m_TimeToLive = 3f;
     [SerializeField] private float m_Knockback = 2f;
-    [SerializeField] private int m_BulletDamage = 20;
     [SerializeField] private GameObject m_BulletImpactParticle;
 
+    private int _damage = 20;
+    
     private void Start() {
         Destroy(gameObject, m_TimeToLive);
     }
@@ -19,9 +20,13 @@ public class Bullet : MonoBehaviour {
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.CompareTag("Enemy")) {
             Enemy enemy = other.gameObject.GetComponentInParent<Enemy>();
-            enemy.Hurt(m_BulletDamage, m_Knockback);
+            enemy.Hurt(_damage, m_Knockback);
             Instantiate(m_BulletImpactParticle, transform.position, transform.rotation);
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
+    }
+    
+    public void SetBulletDamage(int damage) {
+        _damage = damage;
     }
 }

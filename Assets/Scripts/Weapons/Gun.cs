@@ -1,11 +1,12 @@
 using System;
+using ScriptableObjects.VariableSO;
 using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
     public event Action ShootEvent;
     
-    [SerializeField] private GameObject m_BulletPrefab; //replace GO refrence
+    [SerializeField] private Bullet m_BulletPrefab;
     [SerializeField] private Transform m_BulletSpawnPoint;
     [SerializeField] private float m_TimeInterval = 0.8f;
     [SerializeField] private ParticleSystem m_MuzzleFlash;
@@ -13,6 +14,8 @@ public class Gun : MonoBehaviour
     private float _timeRemaining = 0f;
     private bool _isShooting = false;
 
+    private int _damage = 0;
+    
     private void Start() {
         _timeRemaining = m_TimeInterval;
     }
@@ -29,12 +32,19 @@ public class Gun : MonoBehaviour
     }
 
     private void Shoot() {
-        GameObject bulletInstance = Instantiate(m_BulletPrefab, m_BulletSpawnPoint.position, m_BulletSpawnPoint.rotation);
+        print(m_BulletPrefab.name);
+        Bullet bulletInstance = Instantiate(m_BulletPrefab, m_BulletSpawnPoint.position, m_BulletSpawnPoint.rotation);
+        bulletInstance.SetBulletDamage(_damage);
         m_MuzzleFlash.Play();
         ShootEvent?.Invoke();
     }
 
     public void SetShooting(bool shooting) {
         _isShooting = shooting;
+    }
+
+    public void SetDamage(int damage)
+    {
+        _damage = damage;
     }
 }

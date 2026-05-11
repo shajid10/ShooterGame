@@ -1,3 +1,4 @@
+using ScriptableObjects;
 using UnityEngine;
 
 public class Turret : MonoBehaviour
@@ -7,11 +8,22 @@ public class Turret : MonoBehaviour
     private Transform _currentTarget = null;
     private Gun _gun;
     private EnemyDetector _enemyDetector;
+    
+    [SerializeField] private TurretSO m_TurretSO;
 
     private void Start()
     {
         _gun = GetComponent<Gun>();
         _enemyDetector = GetComponentInChildren<EnemyDetector>();
+        
+       //_gun.SetDamage(m_TurretSO.m_Damage.Value);
+        m_TurretSO.m_Damage.ValueChangedEvent += OnDamageValueChanged;
+        m_TurretSO.m_Damage.Initialize();   
+    }
+
+    private void OnDamageValueChanged()
+    {
+        _gun.SetDamage(m_TurretSO.m_Damage.Value);
     }
 
     private void FixedUpdate()

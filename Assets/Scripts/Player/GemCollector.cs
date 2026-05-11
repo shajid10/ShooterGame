@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using ScriptableObjects;
 using UnityEngine;
 
 public class GemCollector : MonoBehaviour
@@ -7,6 +8,8 @@ public class GemCollector : MonoBehaviour
     [SerializeField] private float m_CollectDistance = 0.4f;
     [SerializeField] private float m_CollectSpeed;
     [SerializeField] private LayerMask m_GemLayer;
+    
+    [SerializeField] private PlayerSO m_PlayerSO;
     
     private List<Gem> _nearbyGems;
     
@@ -18,7 +21,6 @@ public class GemCollector : MonoBehaviour
     private void Awake()
     {
         SetGemCount(SaveManager.LoadLong(_gemCountKey, 0));
-        print(_gemCount);
     }
     
     private void Start()
@@ -66,13 +68,15 @@ public class GemCollector : MonoBehaviour
 
     public void SetGemCount(long gemCount)
     {
+        m_PlayerSO.m_GemCount.SetValue(gemCount);
         _gemCount = gemCount; 
-        GemCountChangedEvent?.Invoke();
+        //GemCountChangedEvent?.Invoke();
     }
     
     public void ReduceGemCount(int amount)
     {
         _gemCount -= amount;
-        GemCountChangedEvent?.Invoke();
+        m_PlayerSO.m_GemCount.SetValue(_gemCount);
+        //GemCountChangedEvent?.Invoke();
     }
 }

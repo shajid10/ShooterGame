@@ -2,6 +2,7 @@ using TMPro;
 using UnityEngine;
 using TSF.Utilities;
 using DG.Tweening;
+using ScriptableObjects;
 
 namespace UI
 {
@@ -9,35 +10,35 @@ namespace UI
     {
         [SerializeField] private TextMeshProUGUI m_Text;
         
+        [SerializeField] private PlayerSO m_PlayerSO;
+        
         private GemCollector _gemCollector;
-        private Player _player;
+        //private Player _player;
+        
 
         private Tweener _textTweener;
 
         private void Start()
         {
-            _player = Player.Instance;
-            _gemCollector = _player.GetGemCollector();
-            
-            _gemCollector.GemCountChangedEvent += OnGemCountChanged;
+            m_PlayerSO.m_GemCount.ValueChangedEvent += OnGemCountChanged;
             m_Text.text = "0";
             UpdateUI();
         }
 
         private void OnDestroy()
         {
-            _gemCollector.GemCountChangedEvent -= OnGemCountChanged;
+            m_PlayerSO.m_GemCount.ValueChangedEvent -= OnGemCountChanged;
         }
 
         private void OnGemCountChanged()
         {
-            print("gem counnt changed");
+            print("gem count changed");
             UpdateUI();
         }
 
         private void UpdateUI()
         {
-            long gemCount = _gemCollector.GetGemCount();
+            long gemCount = m_PlayerSO.m_GemCount.Value;
             m_Text.text = Helper.GetRoundUpNumbersAsString(gemCount);
             
             _textTweener?.Complete();

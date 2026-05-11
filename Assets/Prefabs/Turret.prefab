@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c3b3e1d97cb5464e9ba3ada3504bc6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gun
-  m_BulletPrefab: {fileID: 4137785768740791107, guid: 4b98d62fd5aa9994a96416dce6539897, type: 3}
+  m_BulletPrefab: {fileID: 2212314598597649601, guid: 4b98d62fd5aa9994a96416dce6539897, type: 3}
   m_BulletSpawnPoint: {fileID: 8916765449992312064}
   m_TimeInterval: 0.8
   m_MuzzleFlash: {fileID: 198234346748616026, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
@@ -65,7 +65,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Turret
   m_RotateSpeed: 10
-  m_DetectionRadius: 6
+  m_TurretSO: {fileID: 11400000, guid: 9ea630c85108194428db680014e1a3ef, type: 2}
 --- !u!1 &7951599732630514255
 GameObject:
   m_ObjectHideFlags: 0

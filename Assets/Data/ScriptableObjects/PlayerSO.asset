@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8da595f3bca7d049a395bec927cd049, type: 3}
+  m_Name: PlayerSO
+  m_EditorClassIdentifier: Assembly-CSharp::ScriptableObjects.PlayerSO
+  m_MaxPlayerHealth: 100
+  m_PlayerLevel: {fileID: 11400000, guid: e4b327bf85608794398e388518cb1b8c, type: 2}
+  m_PlayerDamage: {fileID: 11400000, guid: 841ea88360b89ad499d65f273c65145d, type: 2}
+  m_NextLevelPrice: {fileID: 11400000, guid: 96429603bf8fdc1479d43f4f01148ed4, type: 2}
+  m_GemCount: {fileID: 11400000, guid: 60aaf7d028846e049b0a2124d40c22a2, type: 2}
