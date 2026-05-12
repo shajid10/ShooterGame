@@ -23,12 +23,8 @@ public class UpgradeButton : MonoBehaviour
         
         m_BuyButton.onClick.AddListener(OnBuyButtonClicked);
         
-        m_NameText.text = m_UpgradeData.m_UpgradeName;
-        m_CostText.text = m_UpgradeData.m_Cost.ToString();
-        m_DamageText.text = m_UpgradeData.m_Damage.ToString();
-        m_LevelText.text = m_UpgradeData.m_Level.ToString();
-        
         CurrencyManager.CurrencyChangedEvent += UpdateUI;
+        UpdateUI();
     }
 
     private void OnDestroy()

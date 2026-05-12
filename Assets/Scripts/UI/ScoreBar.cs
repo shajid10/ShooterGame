@@ -33,7 +33,6 @@ namespace ShooterGame.UI
 
         private void UpdateUI()
         {
-            long gemCount = 200;
             float fillPercentage = (CurrencyManager.Instance.GetCurrentGemCount() % m_ScoreThreshold) / (float)m_ScoreThreshold;
             
             _barTweener?.Complete();

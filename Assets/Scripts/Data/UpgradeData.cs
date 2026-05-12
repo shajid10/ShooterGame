@@ -1,4 +1,5 @@
 ﻿using System;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace ShooterGame.Data
@@ -8,14 +9,28 @@ namespace ShooterGame.Data
     {
         public event Action UpgradeCompleteEvent;
         
+        [Header("Current Values")]
         public string m_UpgradeName;
         public int m_Damage;
         public long m_Cost;
         public int m_Level;
-        
+
+        [Header("Default Values")]
+        [SerializeField] private int m_DefaultDamage;
+        [SerializeField] private int m_DefaultCost;
         [SerializeField] private int m_CostMultiplier;
         [SerializeField] private int m_DamageIncrement;
+
+        public int DefaultDamage => m_DefaultDamage;
+        public int DefaultCost => m_DefaultCost;
         
+        [Button]
+        public void ResetData()
+        {
+            m_Cost = m_DefaultCost;
+            m_Damage = m_DefaultDamage;
+            m_Level = 1;
+        }
         
         public void CompleteUpgrade()
         {

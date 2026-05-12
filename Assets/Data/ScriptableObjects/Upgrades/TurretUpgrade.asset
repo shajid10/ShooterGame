@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: TurretUpgrade
   m_EditorClassIdentifier: Assembly-CSharp::ShooterGame.Data.UpgradeData
   m_UpgradeName: Turret Damage
-  m_Damage: 150
-  m_Cost: 32000
-  m_Level: 7
+  m_Damage: 70
+  m_Cost: 1200
+  m_Level: 3
+  m_DefaultDamage: 30
+  m_DefaultCost: 300
   m_CostMultiplier: 2
   m_DamageIncrement: 20

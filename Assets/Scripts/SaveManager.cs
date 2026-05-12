@@ -1,3 +1,4 @@
+using ShooterGame.Data;
 using UnityEngine;
 
 public static class SaveManager
@@ -25,6 +26,25 @@ public static class SaveManager
         if (loadedString == "")
             return defaultValue;
         return long.Parse(loadedString);
+    }
+
+    public static void SaveUpgradeData(UpgradeData upgradeData)
+    {
+        PlayerPrefs.SetInt("Damage "+ upgradeData.m_UpgradeName, upgradeData.m_Damage);
+        PlayerPrefs.SetInt("Level "+ upgradeData.m_UpgradeName, upgradeData.m_Level);
+        SaveLong("Cost "+ upgradeData.m_UpgradeName, upgradeData.m_Cost);
+        
+        PlayerPrefs.Save();
+    }
+
+    public static UpgradeData LoadUpgradeData (UpgradeData upgradeData)
+    {
+        UpgradeData data = ScriptableObject.CreateInstance<UpgradeData>();
+        data.m_Damage = LoadInt("Damage " + upgradeData.m_UpgradeName, upgradeData.DefaultDamage);
+        data.m_Level = LoadInt("Level " + upgradeData.m_UpgradeName, 1);
+        data.m_Cost = LoadLong("Cost " + upgradeData.m_UpgradeName, upgradeData.DefaultCost);
+        
+        return data;
     }
     
     public static bool HasKey(string key)

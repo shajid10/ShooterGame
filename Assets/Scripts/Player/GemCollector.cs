@@ -8,8 +8,6 @@ public class GemCollector : MonoBehaviour
     [SerializeField] private float m_CollectSpeed;
     [SerializeField] private LayerMask m_GemLayer;
     
-    [SerializeField] private PlayerData m_PlayerData;
-    
     private CurrencyManager _currencyManager;
     
     private List<Gem> _nearbyGems;
@@ -20,8 +18,7 @@ public class GemCollector : MonoBehaviour
         
         _currencyManager = CurrencyManager.Instance;
     }
-
-
+    
 
     private void FixedUpdate()
     {

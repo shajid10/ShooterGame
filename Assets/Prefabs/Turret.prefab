@@ -65,7 +65,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Turret
   m_RotateSpeed: 10
-  m_TurretSO: {fileID: 11400000, guid: 9ea630c85108194428db680014e1a3ef, type: 2}
+  m_TurretUpgradeData: {fileID: 11400000, guid: 567a25aa09239604392a67b3ed6f6bc7, type: 2}
 --- !u!1 &7951599732630514255
 GameObject:
   m_ObjectHideFlags: 0

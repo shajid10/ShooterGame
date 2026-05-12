@@ -10,6 +10,8 @@ public class CurrencyManager : MonoBehaviour
     public static event Action CurrencyChangedEvent;
     
     [SerializeField] private CurrencyData m_CurrencyData;
+
+    private const string CurrencyKey = "Currency";
     
     private void Awake()
     {
@@ -17,6 +19,12 @@ public class CurrencyManager : MonoBehaviour
         {
             Instance = this;
         }
+    }
+
+    private void Start()
+    {
+        long loadedCurrency = SaveManager.LoadLong(CurrencyKey, 0);
+        SetCurrentGemCount(loadedCurrency);
     }
 
     public long GetCurrentGemCount()
@@ -28,18 +36,24 @@ public class CurrencyManager : MonoBehaviour
     public void SetCurrentGemCount(long gemCount)
     {
         m_CurrencyData.m_CurrentGemCount = gemCount;
-        CurrencyChangedEvent?.Invoke();
+        SaveDataAndInvoke();
     }
 
     public void IncrementGemCount(long gemCount)
     {
         m_CurrencyData.m_CurrentGemCount += gemCount;
-        CurrencyChangedEvent?.Invoke();
+        SaveDataAndInvoke();
     }
     
     public void DecrementGemCount(long gemCount)
     {
         m_CurrencyData.m_CurrentGemCount -= gemCount;
+        SaveDataAndInvoke();
+    }
+
+    private void SaveDataAndInvoke()
+    {
+        SaveManager.SaveLong(CurrencyKey, m_CurrencyData.m_CurrentGemCount);
         CurrencyChangedEvent?.Invoke();
     }
 }

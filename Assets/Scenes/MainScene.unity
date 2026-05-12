@@ -1332,6 +1332,19 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.8, z: 0}
+--- !u!114 &456924861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 308466131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50a4ef1ea75c3fa458e177220610c44c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UpdateManager
+  m_UpgradeData: {fileID: 11400000, guid: 30c76bdaf69fba24ba2c4da9b40d61a3, type: 2}
 --- !u!1001 &509422420
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4627,6 +4640,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 7f58ecb5cd119694ca405cff8d03558b, type: 2}
     - target: {fileID: 1268773250449933344, guid: 69bcf3ea4a05d154a8289010b139ad81, type: 3}
+      propertyPath: m_PlayerUpgrade
+      value: 
+      objectReference: {fileID: 11400000, guid: 30c76bdaf69fba24ba2c4da9b40d61a3, type: 2}
+    - target: {fileID: 1268773250449933344, guid: 69bcf3ea4a05d154a8289010b139ad81, type: 3}
       propertyPath: _inputController
       value: 
       objectReference: {fileID: 1463172894}
@@ -4824,6 +4841,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6294151828348989854, guid: 69bcf3ea4a05d154a8289010b139ad81, type: 3}
       insertIndex: -1
       addedObject: {fileID: 456924859}
+    - targetCorrespondingSourceObject: {fileID: 6294151828348989854, guid: 69bcf3ea4a05d154a8289010b139ad81, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 456924861}
     - targetCorrespondingSourceObject: {fileID: 5465440333059805278, guid: 69bcf3ea4a05d154a8289010b139ad81, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1709958616}

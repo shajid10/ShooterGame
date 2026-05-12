@@ -1,4 +1,6 @@
+using System;
 using ScriptableObjects;
+using ShooterGame.Data;
 using ShooterGame.ScriptableObjects;
 using UnityEngine;
 
@@ -12,21 +14,25 @@ namespace ShooterGame.Weapons
         private Gun _gun;
         private EnemyDetector _enemyDetector;
     
-        [SerializeField] private TurretData m_TurretData;
+        [SerializeField] private UpgradeData m_TurretUpgradeData;
 
         private void Start()
         {
             _gun = GetComponent<Gun>();
             _enemyDetector = GetComponentInChildren<EnemyDetector>();
         
-            //_gun.SetDamage(m_TurretSO.m_Damage.Value);
-            //m_TurretData.m_Damage.ValueChangedEvent += OnDamageValueChanged;
-            //m_TurretData.m_Damage.Initialize();   
+            _gun.SetDamage(m_TurretUpgradeData.m_Damage);
+            m_TurretUpgradeData.UpgradeCompleteEvent += OnUpgradeComplete; 
         }
 
-        private void OnDamageValueChanged()
+        private void OnDestroy()
         {
-            //_gun.SetDamage(m_TurretData.m_Damage.Value);
+            m_TurretUpgradeData.UpgradeCompleteEvent -= OnUpgradeComplete;
+        }
+
+        private void OnUpgradeComplete()
+        {
+            _gun.SetDamage(m_TurretUpgradeData.m_Damage);
         }
 
         private void FixedUpdate()

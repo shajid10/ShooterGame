@@ -1,5 +1,6 @@
 using System;
 using ScriptableObjects;
+using ShooterGame.Data;
 using ShooterGame.Weapons;
 using UnityEngine;
 
@@ -11,7 +12,8 @@ public class Player : MonoBehaviour
     [SerializeField] private Gun m_Gun;
     [SerializeField] private Animator m_Animator;
 
-    [SerializeField] private PlayerData m_PlayerData;
+    [SerializeField] private UpgradeData m_PlayerUpgrade;
+    //private UpgradeManager _upgradeManager;
 
     private Transform _currentTarget = null;
     private bool _shooting = false;
@@ -41,14 +43,21 @@ public class Player : MonoBehaviour
        //_gemCollector.GemCountChangedEvent += OnGemCountChanged;
         // m_PlayerData.m_Damage.ValueChangedEvent += OnDamageValueChanged;
         // m_PlayerData.m_Damage.Initialize();
+       
+        //_upgradeManager = GetComponent<UpgradeManager>();
+       m_PlayerUpgrade.UpgradeCompleteEvent += OnPlayerUpgradeCompleteEvent;
         
-        m_Gun.SetDamage(20);
+        m_Gun.SetDamage(m_PlayerUpgrade.m_Damage);
     }
 
-    private void OnDamageValueChanged()
+    private void OnDestroy()
     {
-        //m_Gun.SetDamage(m_PlayerData.m_Damage.Value);
-        m_Gun.SetDamage(20);
+        m_PlayerUpgrade.UpgradeCompleteEvent -= OnPlayerUpgradeCompleteEvent;
+    }
+
+    private void OnPlayerUpgradeCompleteEvent()
+    {
+        m_Gun.SetDamage(m_PlayerUpgrade.m_Damage);
     }
 
 
