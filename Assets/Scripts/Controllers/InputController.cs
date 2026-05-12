@@ -12,6 +12,18 @@ public class InputController : MonoBehaviour
             Instance = this;
         }
     }
+
+    public void DisableJoystick()
+    {
+        m_DynamicJoystick.enabled = false;
+        m_DynamicJoystick.gameObject.SetActive(false);
+    }
+
+    public void EnableJoystick()
+    {
+        m_DynamicJoystick.enabled = true;
+        m_DynamicJoystick.gameObject.SetActive(true);
+    }
     
     public Vector2 GetInputVector()
     {

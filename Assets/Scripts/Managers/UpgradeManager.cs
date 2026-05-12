@@ -7,7 +7,7 @@ public class UpgradeManager : MonoBehaviour
 
     private void Start()
     {
-        //m_UpgradeData.UpgradeCompleteEvent += OnUpgradeCompleteEvent;
+        m_UpgradeData.UpgradeCompleteEvent += OnUpgradeCompleteEvent;
     }
 
     private void OnUpgradeCompleteEvent()

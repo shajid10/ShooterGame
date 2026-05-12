@@ -1,5 +1,4 @@
 using DG.Tweening;
-using ScriptableObjects;
 using TMPro;
 using TSF.Utilities;
 using UnityEngine;
@@ -10,14 +9,11 @@ namespace ShooterGame.UI
     {
         [SerializeField] private TextMeshProUGUI m_Text;
         
-        [SerializeField] private PlayerData m_PlayerData;
-        
         private Tweener _textTweener;
         private CurrencyManager _currencyManager;
 
         private void Start()
         {
-            //m_PlayerData.m_GemCount.ValueChangedEvent += OnGemCountChanged;
             _currencyManager = CurrencyManager.Instance;
             CurrencyManager.CurrencyChangedEvent += OnGemCountChanged;
             

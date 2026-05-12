@@ -47,7 +47,7 @@ public class UpgradeButton : MonoBehaviour
         m_NameText.text = m_UpgradeData.m_UpgradeName;
         m_CostText.text = m_UpgradeData.m_Cost.ToString();
         m_DamageText.text = m_UpgradeData.m_Damage.ToString();
-        m_LevelText.text = m_UpgradeData.m_Level.ToString();
+        m_LevelText.text = "Level " + m_UpgradeData.m_Level.ToString();
 
         if (_currencyManager.GetCurrentGemCount() >= m_UpgradeData.m_Cost)
         {
