@@ -840,6 +840,7 @@ GameObject:
   - component: {fileID: 7197082370551522130}
   - component: {fileID: 2204058334656029854}
   - component: {fileID: 9068381009514269350}
+  - component: {fileID: 6644811079118207592}
   m_Layer: 5
   m_Name: UpgradeButton
   m_TagString: Untagged
@@ -993,3 +994,21 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &6644811079118207592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7894287918005127690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7aff2151dc3412479b128396ec76323, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UpgradeButton
+  m_UpgradeData: {fileID: 0}
+  m_NameText: {fileID: 8595788122923140030}
+  m_BuyButton: {fileID: 7917846736803545887}
+  m_CostText: {fileID: 7794833008751343201}
+  m_DamageText: {fileID: 2634033227792407072}
+  m_LevelText: {fileID: 559044048882517592}

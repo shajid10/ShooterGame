@@ -1,5 +1,6 @@
 using System;
 using Data;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 
@@ -23,6 +24,7 @@ public class CurrencyManager : MonoBehaviour
         return m_CurrencyData.m_CurrentGemCount;
     }
 
+    [Button]
     public void SetCurrentGemCount(long gemCount)
     {
         m_CurrencyData.m_CurrentGemCount = gemCount;
