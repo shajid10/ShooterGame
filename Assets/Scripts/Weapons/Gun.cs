@@ -21,14 +21,15 @@ namespace ShooterGame.Weapons
             _timeRemaining = m_TimeInterval;
         }
 
-        private void Update() {
-            if (_isShooting) {
-                if (_timeRemaining > 0) {
-                    _timeRemaining -= Time.deltaTime;
-                } else {
-                    Shoot();
-                    _timeRemaining = m_TimeInterval;
-                }
+        private void Update()
+        {
+            if (!_isShooting) return;
+            
+            if (_timeRemaining > 0) {
+                _timeRemaining -= Time.deltaTime;
+            } else {
+                Shoot();
+                _timeRemaining = m_TimeInterval;
             }
         }
 

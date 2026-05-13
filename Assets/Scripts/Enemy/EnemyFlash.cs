@@ -24,13 +24,6 @@ public class EnemyFlash : MonoBehaviour {
     {
         StartCoroutine(FlashCoroutine());
     }
-    
-    // private IEnumerator FlashCoroutine()
-    // {
-    //     _renderer.material.color = m_FlashColor;
-    //     yield return new WaitForSeconds(m_FlashDuration);
-    //     _renderer.material.color = _originalColor;
-    // }
 
     private IEnumerator FlashCoroutine()
     {

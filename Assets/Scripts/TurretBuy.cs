@@ -1,5 +1,6 @@
 using ShooterGame.Player;
 using ShooterGame.Spawners;
+using ShooterGame.Utils;
 using ShooterGame.Weapons;
 using UnityEngine;
 
@@ -90,7 +91,7 @@ public class TurretBuy : MonoBehaviour
 
     private void UpdateUI()
     {
-        m_CostText.text = m_TurretPrice.ToString();
+        m_CostText.text = Util.GetRoundUpNumbersAsStringGranular(m_TurretPrice);
     }
 
     public void ExpectGem(int value)

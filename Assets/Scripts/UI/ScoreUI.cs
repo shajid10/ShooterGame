@@ -1,4 +1,5 @@
 using DG.Tweening;
+using ShooterGame.Utils;
 using TMPro;
 using TSF.Utilities;
 using UnityEngine;
@@ -33,7 +34,7 @@ namespace ShooterGame.UI
 
         private void UpdateUI()
         {
-            m_Text.text = Helper.GetRoundUpNumbersAsString(_currencyManager.GetCurrentGemCount());
+            m_Text.text = Util.GetRoundUpNumbersAsStringGranular(_currencyManager.GetCurrentGemCount());
             
             _textTweener?.Complete();
             _textTweener = m_Text.transform.DOPunchScale(Vector3.one * 0.5f, 0.2f).SetLink(gameObject);

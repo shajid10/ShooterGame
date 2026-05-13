@@ -5,19 +5,23 @@ using ShooterGame.Player;
 using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour {
+    private static readonly int HasTarget = Animator.StringToHash("hasTarget");
+    
     [SerializeField] private float m_MoveSpeed = 3f;
     [SerializeField] private ParticleSystem m_DeathParticles;
     [SerializeField] private Gem m_Gem;
+    
+    [SerializeField] private Animator  m_Animator; 
     private Vector3 _directionToPlayer;
 
     private NavMeshAgent _navAgent;
-    private Transform _playerTransform;
+    private Player _player;
     private Rigidbody _rb;
     private EnemyFlash _enemyFlash;
     private HealthComponent _health;
 
     private void Start() {
-        _playerTransform = Player.Instance.transform;
+        _player = Player.Instance;
         _enemyFlash = GetComponent<EnemyFlash>();
         _navAgent = GetComponent<NavMeshAgent>();
         _rb = GetComponent<Rigidbody>();
@@ -30,8 +34,13 @@ public class Enemy : MonoBehaviour {
     
 
     private void Update() {
-        if (_playerTransform)
-            _navAgent.SetDestination(_playerTransform.position);
+        if (_player && !_player.IsDead())
+            _navAgent.SetDestination(_player.transform.position);
+        else
+        {
+            _navAgent.speed = 0;
+            m_Animator.SetBool(HasTarget, false);
+        }
     }
 
     public void Hurt(int damage,  float knockback)

@@ -19,6 +19,7 @@ namespace ShooterGame.Player
         private Transform _currentTarget = null;
         private bool _shooting = false;
         private bool _hasTarget = false;
+        private bool _isDead = false;
         private CharacterController _characterController;
         private GemCollector _gemCollector;
         private EnemyDetector _enemyDetector;
@@ -28,6 +29,7 @@ namespace ShooterGame.Player
         private static readonly int IsMoving = Animator.StringToHash("isMoving");
         private static readonly int X = Animator.StringToHash("x");
         private static readonly int Y = Animator.StringToHash("y");
+        private static readonly int OnDeath = Animator.StringToHash("OnDeath");
 
         public static Player Instance {get; private set;}
 
@@ -51,7 +53,11 @@ namespace ShooterGame.Player
 
         private void OnPlayerDeath()
         {
-            gameObject.SetActive(false);
+            _isDead = true;
+            m_Gun.SetShooting(false);
+            m_Animator.SetTrigger(OnDeath);
+            
+            //gameObject.SetActive(false);
         }
 
         private void OnDestroy()
@@ -66,6 +72,7 @@ namespace ShooterGame.Player
 
 
         private void Update() {
+            if (_isDead) return;
             HandleMovement();
             _currentTarget = _enemyDetector.GetNearestEnemy();
             HandleShooting();
@@ -113,6 +120,11 @@ namespace ShooterGame.Player
         public Gun GetGun()
         {
             return m_Gun;
+        }
+
+        public bool IsDead()
+        {
+            return _isDead;
         }
     }
 }

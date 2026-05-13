@@ -29,7 +29,8 @@ namespace ShooterGame.UI
         
         private void OnHealthChanged()
         {
-            if (m_FillImage != null)
+            if (m_HealthComponent.GetHealth() <= 0) gameObject.SetActive(false);
+            if (m_FillImage)
                 m_FillImage.DOFillAmount(m_HealthComponent.GetHealthPercentage(), m_FillDuration).SetEase(Ease.InOutSine).SetLink(gameObject);
         }
 
