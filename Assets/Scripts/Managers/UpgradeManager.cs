@@ -8,15 +8,13 @@ public class UpgradeManager : MonoBehaviour
     private void Start()
     {
         m_UpgradeData.UpgradeCompleteEvent += OnUpgradeCompleteEvent;
+        
+        m_UpgradeData = SaveManager.LoadUpgradeData(m_UpgradeData);
     }
 
     private void OnUpgradeCompleteEvent()
     {
-    }
-
-    private void SaveUpgradeData()
-    {
-        
+        SaveManager.SaveUpgradeData(m_UpgradeData);
     }
 
     public UpgradeData GetUpgradeData()

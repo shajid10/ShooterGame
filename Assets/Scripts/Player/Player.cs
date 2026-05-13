@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Gun m_Gun;
     [SerializeField] private Animator m_Animator;
 
-    [SerializeField] private UpgradeData m_PlayerUpgrade;
+    [SerializeField] private UpgradeData m_PlayerUpgradeData;
     //private UpgradeManager _upgradeManager;
 
     private Transform _currentTarget = null;
@@ -40,24 +40,19 @@ public class Player : MonoBehaviour
         _gemCollector = GetComponentInChildren<GemCollector>();
         _enemyDetector = GetComponentInChildren<EnemyDetector>();
         
-       //_gemCollector.GemCountChangedEvent += OnGemCountChanged;
-        // m_PlayerData.m_Damage.ValueChangedEvent += OnDamageValueChanged;
-        // m_PlayerData.m_Damage.Initialize();
-       
-        //_upgradeManager = GetComponent<UpgradeManager>();
-       m_PlayerUpgrade.UpgradeCompleteEvent += OnPlayerUpgradeCompleteEvent;
+        m_PlayerUpgradeData.UpgradeCompleteEvent += OnPlayerUpgradeDataCompleteEvent;
         
-        m_Gun.SetDamage(m_PlayerUpgrade.m_Damage);
+        m_Gun.SetDamage(m_PlayerUpgradeData.m_Damage);
     }
 
     private void OnDestroy()
     {
-        m_PlayerUpgrade.UpgradeCompleteEvent -= OnPlayerUpgradeCompleteEvent;
+        m_PlayerUpgradeData.UpgradeCompleteEvent -= OnPlayerUpgradeDataCompleteEvent;
     }
 
-    private void OnPlayerUpgradeCompleteEvent()
+    private void OnPlayerUpgradeDataCompleteEvent()
     {
-        m_Gun.SetDamage(m_PlayerUpgrade.m_Damage);
+        m_Gun.SetDamage(m_PlayerUpgradeData.m_Damage);
     }
 
 

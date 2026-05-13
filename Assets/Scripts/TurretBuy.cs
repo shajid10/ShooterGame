@@ -9,6 +9,8 @@ public class TurretBuy : MonoBehaviour
     [SerializeField] private Turret m_TurretPrefab;
     
     private GemSpawnerPlayer _gemSpawnerPlayer;
+
+    private int _pendingGemValue = 0;
     
     private string _objectName;
     private string _saveKey;
@@ -45,11 +47,20 @@ public class TurretBuy : MonoBehaviour
         UpdateUI();
     }
 
+    private void OnDestroy()
+    {
+        if (_gemSpawnerPlayer)
+            _gemSpawnerPlayer.GemDumpedEvent -= OnGemSpawnerGemDumped;
+    }
+
     private void OnGemSpawnerGemDumped(TurretBuy obj)
     {
         if (this == obj)
         {
-            m_TurretPrice -= 100;
+            int gemValue = CurrencyManager.Instance.GetGemValue();
+            m_TurretPrice -= gemValue;
+            _pendingGemValue -= gemValue;
+            
             SavePrice();
             if (m_TurretPrice <= 0)
             {
@@ -81,8 +92,13 @@ public class TurretBuy : MonoBehaviour
         m_CostText.text = m_TurretPrice.ToString();
     }
 
+    public void ExpectGem(int value)
+    {
+        _pendingGemValue += value;
+    }
+    
     public bool CanReceiveGem()
     {
-        return m_TurretPrice > 0;
+        return (m_TurretPrice - _pendingGemValue) > 0;
     }
 }

@@ -716,6 +716,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6784100093295058364, guid: cfba2f6e3352fad428c2538f56c47ebd, type: 3}
+      propertyPath: m_TurretPrice
+      value: 300
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -780,6 +784,10 @@ PrefabInstance:
     - target: {fileID: 6382743066324741566, guid: cfba2f6e3352fad428c2538f56c47ebd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6784100093295058364, guid: cfba2f6e3352fad428c2538f56c47ebd, type: 3}
+      propertyPath: m_TurretPrice
+      value: 300
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1354,7 +1362,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 308466131}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 50a4ef1ea75c3fa458e177220610c44c, type: 3}
   m_Name: 
@@ -2307,6 +2315,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CurrencyManager
   m_CurrencyData: {fileID: 11400000, guid: b2a70f91494da514e85144444a0b3257, type: 2}
+  m_GemData: {fileID: 11400000, guid: 2ec11ec6e4e932441bbc0d760e5585ce, type: 2}
 --- !u!4 &879746505
 Transform:
   m_ObjectHideFlags: 0
@@ -2436,6 +2445,50 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6382743066324741566, guid: cfba2f6e3352fad428c2538f56c47ebd, type: 3}
   m_PrefabInstance: {fileID: 207755311}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1381290321
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1381290323}
+  - component: {fileID: 1381290322}
+  m_Layer: 0
+  m_Name: SettingsManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1381290322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1381290321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0b24c3a2ec20254fb2978e35e65cce8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SettingsManager
+--- !u!4 &1381290323
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1381290321}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1408696902
 GameObject:
   m_ObjectHideFlags: 0
@@ -3455,7 +3508,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 511
 --- !u!114 &1892234273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3740,6 +3793,10 @@ PrefabInstance:
     - target: {fileID: 6382743066324741566, guid: cfba2f6e3352fad428c2538f56c47ebd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6784100093295058364, guid: cfba2f6e3352fad428c2538f56c47ebd, type: 3}
+      propertyPath: m_TurretPrice
+      value: 300
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4183,6 +4240,10 @@ PrefabInstance:
       propertyPath: m_InputController
       value: 
       objectReference: {fileID: 1463172894}
+    - target: {fileID: 1268773250449933344, guid: 69bcf3ea4a05d154a8289010b139ad81, type: 3}
+      propertyPath: m_PlayerUpgradeData
+      value: 
+      objectReference: {fileID: 11400000, guid: 30c76bdaf69fba24ba2c4da9b40d61a3, type: 2}
     - target: {fileID: 1339101018200438765, guid: 69bcf3ea4a05d154a8289010b139ad81, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -4223,6 +4284,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 3853268898807207900, guid: 69bcf3ea4a05d154a8289010b139ad81, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1e8b47feb92ac514e97caea462e6a794, type: 2}
     - target: {fileID: 3882815353823017779, guid: 69bcf3ea4a05d154a8289010b139ad81, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -4259,6 +4324,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 6148737315974723067, guid: 69bcf3ea4a05d154a8289010b139ad81, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: de2b07d5fd252424b91f1eab49135a42, type: 2}
     - target: {fileID: 6240733294840144465, guid: 69bcf3ea4a05d154a8289010b139ad81, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -4436,6 +4505,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6784100093295058364, guid: cfba2f6e3352fad428c2538f56c47ebd, type: 3}
+      propertyPath: m_TurretPrice
+      value: 300
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4459,3 +4532,4 @@ SceneRoots:
   - {fileID: 730199208}
   - {fileID: 535928158}
   - {fileID: 879746505}
+  - {fileID: 1381290323}

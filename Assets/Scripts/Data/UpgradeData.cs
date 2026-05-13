@@ -10,10 +10,10 @@ namespace ShooterGame.Data
         public event Action UpgradeCompleteEvent;
         
         [Header("Current Values")]
-        public string m_UpgradeName;
-        public int m_Damage;
-        public long m_Cost;
-        public int m_Level;
+        [HideInInspector] public string m_UpgradeName;
+        [HideInInspector] public int m_Damage;
+        [HideInInspector] public long m_Cost;
+        [HideInInspector] public int m_Level;
 
         [Header("Default Values")]
         [SerializeField] private int m_DefaultDamage;
@@ -30,6 +30,11 @@ namespace ShooterGame.Data
             m_Cost = m_DefaultCost;
             m_Damage = m_DefaultDamage;
             m_Level = 1;
+        }
+
+        public void UpdateData()
+        {
+            UpgradeCompleteEvent?.Invoke();
         }
         
         public void CompleteUpgrade()
