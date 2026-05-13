@@ -19,6 +19,7 @@ namespace Components
                 HitBoxComponent hitbox =  other.GetComponentInParent<HitBoxComponent>();
                 if (hitbox)
                     damage = hitbox.Damage;
+                print(damage);
                 
                 if (_hurtCoroutine != null) return;
                 _hurtCoroutine = StartCoroutine(GetHurt(damage));

@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9d3b3fed42125d469098729655d2a9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
-  m_EnableSpawning: 0
+  m_EnableSpawning: 1
   m_EnemyPrefab: {fileID: 4324300799179211982, guid: a8d20a2f6476a7d41a43825ae093426c, type: 3}
   m_SpawnPoints:
   - {fileID: 1774017514}
@@ -1485,8 +1485,8 @@ CharacterController:
   serializedVersion: 3
   m_Height: 1.6
   m_Radius: 0.24
-  m_SlopeLimit: 90
-  m_StepOffset: 0.3
+  m_SlopeLimit: 45
+  m_StepOffset: 1
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.8, z: 0}
@@ -1760,7 +1760,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GemSpawnerPlayer
   m_GemVisual: {fileID: 4527900738002941042, guid: 0680b4405ebd5c442a95f03a5ec8c324, type: 3}
   m_GemData: {fileID: 11400000, guid: 2ec11ec6e4e932441bbc0d760e5585ce, type: 2}
-  m_SpawnInterval: 0.3
+  m_SpawnInterval: 0.1
 --- !u!1 &535928157
 GameObject:
   m_ObjectHideFlags: 0

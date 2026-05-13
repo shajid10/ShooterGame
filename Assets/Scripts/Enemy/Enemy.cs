@@ -28,6 +28,7 @@ public class Enemy : MonoBehaviour {
         _health = GetComponent<HealthComponent>();
         
         _navAgent.speed = m_MoveSpeed;
+        _navAgent.stoppingDistance = 0.4f;
         
         _health.DeathEvent += OnDeath;
     }

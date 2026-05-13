@@ -55,7 +55,7 @@ MonoBehaviour:
   m_MoveSpeed: 3
   m_DeathParticles: {fileID: 7295410818338732598, guid: a2aa6ed16862f8c40ad1f98146b3422c, type: 3}
   m_Gem: {fileID: 5281615192667678164, guid: 10355471598ca7940b1ddb1b2440953d, type: 3}
-  m_Animator: {fileID: 0}
+  m_Animator: {fileID: 3903569925582701547}
 --- !u!54 &6661020455128214887
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -65,7 +65,7 @@ Rigidbody:
   m_GameObject: {fileID: 491978197877446929}
   serializedVersion: 5
   m_Mass: 1
-  m_LinearDamping: 0
+  m_LinearDamping: 100
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -75,13 +75,13 @@ Rigidbody:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 94
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!114 &1808807386517961264
 MonoBehaviour:
@@ -549,6 +549,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ceab972275900084a8502208c46dd530, type: 3}
+--- !u!95 &3903569925582701547 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: ceab972275900084a8502208c46dd530, type: 3}
+  m_PrefabInstance: {fileID: 7441865797691113082}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6975065366632110481 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ceab972275900084a8502208c46dd530, type: 3}
