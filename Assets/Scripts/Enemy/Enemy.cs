@@ -1,6 +1,7 @@
-using System;
+using ShooterGame.Components;
 using UnityEngine;
 using DG.Tweening;
+using ShooterGame.Player;
 using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour {
@@ -16,7 +17,7 @@ public class Enemy : MonoBehaviour {
     private HealthComponent _health;
 
     private void Start() {
-        _playerTransform = FindAnyObjectByType<Player>().transform;
+        _playerTransform = Player.Instance.transform;
         _enemyFlash = GetComponent<EnemyFlash>();
         _navAgent = GetComponent<NavMeshAgent>();
         _rb = GetComponent<Rigidbody>();
@@ -24,12 +25,13 @@ public class Enemy : MonoBehaviour {
         
         _navAgent.speed = m_MoveSpeed;
         
-        _health.EnemyDeathEvent += OnEnemyDeath;
+        _health.DeathEvent += OnDeath;
     }
     
 
     private void Update() {
-        _navAgent.SetDestination(_playerTransform.position);
+        if (_playerTransform)
+            _navAgent.SetDestination(_playerTransform.position);
     }
 
     public void Hurt(int damage,  float knockback)
@@ -41,7 +43,7 @@ public class Enemy : MonoBehaviour {
         _health.ReduceHealth(damage);
     }
     
-    private void OnEnemyDeath()
+    private void OnDeath()
     {
         Instantiate(m_DeathParticles, transform.position, Quaternion.identity);
         Instantiate(m_Gem, transform.position, Quaternion.identity);
@@ -56,6 +58,6 @@ public class Enemy : MonoBehaviour {
 
     private void OnDestroy()
     {
-        _health.EnemyDeathEvent -= OnEnemyDeath;
+        _health.DeathEvent -= OnDeath;
     }
 }

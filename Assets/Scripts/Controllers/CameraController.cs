@@ -1,32 +1,34 @@
-using System;
-using UnityEngine;
-using DG.Tweening;
+using ShooterGame.Player;
 using ShooterGame.Weapons;
 using Unity.Cinemachine;
+using UnityEngine;
 
-public class CameraController : MonoBehaviour
+namespace ShooterGame.Controllers
 {
-    [SerializeField] private float m_CamShakeIntensity = 0.3f;
+    public class CameraController : MonoBehaviour
+    {
+        [SerializeField] private float m_CamShakeIntensity = 0.3f;
     
-    private CinemachineImpulseSource _impulseSource;
-    private Gun _gun;
+        private CinemachineImpulseSource _impulseSource;
+        private Gun _gun;
 
-    private void Start()
-    {
-        _gun = Player.Instance.GetGun();
-        _impulseSource = GetComponent<CinemachineImpulseSource>();
-        _gun.ShootEvent += OnGunShoot;
+        private void Start()
+        {
+            _gun = Player.Player.Instance.GetGun();
+            _impulseSource = GetComponent<CinemachineImpulseSource>();
+            _gun.ShootEvent += OnGunShoot;
         
-        _impulseSource.DefaultVelocity = Vector3.one * m_CamShakeIntensity;
-    }
-    private void OnDisable()
-    {
-        _gun.ShootEvent -= OnGunShoot;
-    }
+            _impulseSource.DefaultVelocity = Vector3.one * m_CamShakeIntensity;
+        }
+        private void OnDisable()
+        {
+            _gun.ShootEvent -= OnGunShoot;
+        }
 
-    private void OnGunShoot()
-    {
-        _impulseSource.GenerateImpulse();
-    }
+        private void OnGunShoot()
+        {
+            _impulseSource.GenerateImpulse();
+        }
 
+    }
 }

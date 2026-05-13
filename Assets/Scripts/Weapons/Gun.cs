@@ -35,7 +35,6 @@ namespace ShooterGame.Weapons
         private void Shoot() {
             Bullet bulletInstance = Instantiate(m_BulletPrefab, m_BulletSpawnPoint.position, m_BulletSpawnPoint.rotation);
             bulletInstance.SetBulletDamage(_damage);
-            print(_damage);
             m_MuzzleFlash.Play();
             ShootEvent?.Invoke();
         }

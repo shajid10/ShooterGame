@@ -1,3 +1,4 @@
+using ShooterGame.Player;
 using ShooterGame.Spawners;
 using ShooterGame.Weapons;
 using UnityEngine;

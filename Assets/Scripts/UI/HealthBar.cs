@@ -1,4 +1,6 @@
+using ShooterGame.Components;
 using DG.Tweening;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,10 +11,15 @@ namespace ShooterGame.UI
         [SerializeField] private HealthComponent m_HealthComponent;
         [SerializeField] private Image m_FillImage;
         [SerializeField] private float m_FillDuration;
+        
+        [OnValueChanged("OnFillColorChanged")]
+        [SerializeField] private Color m_FillColor = Color.red;
 
         private void Start()
         {
             m_HealthComponent.HealthChangedEvent += OnHealthChanged;
+            
+            m_FillImage.color = m_FillColor;
         }
 
         private void OnDestroy()
@@ -24,6 +31,11 @@ namespace ShooterGame.UI
         {
             if (m_FillImage != null)
                 m_FillImage.DOFillAmount(m_HealthComponent.GetHealthPercentage(), m_FillDuration).SetEase(Ease.InOutSine).SetLink(gameObject);
+        }
+
+        private void OnFillColorChanged()
+        {
+            m_FillImage.color = m_FillColor;
         }
     }
 }

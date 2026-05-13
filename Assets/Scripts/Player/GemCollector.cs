@@ -1,60 +1,62 @@
 using System.Collections.Generic;
-using ScriptableObjects;
 using UnityEngine;
 
-public class GemCollector : MonoBehaviour
+namespace ShooterGame.Player
 {
-    [SerializeField] private float m_CollectDistance = 0.4f;
-    [SerializeField] private float m_CollectSpeed;
-    [SerializeField] private LayerMask m_GemLayer;
-    
-    private CurrencyManager _currencyManager;
-    
-    private List<Gem> _nearbyGems;
-    
-    private void Start()
+    public class GemCollector : MonoBehaviour
     {
-        _nearbyGems = new List<Gem>();
-        
-        _currencyManager = CurrencyManager.Instance;
-    }
+        [SerializeField] private float m_CollectDistance = 0.4f;
+        [SerializeField] private float m_CollectSpeed;
+        [SerializeField] private LayerMask m_GemLayer;
     
-
-    private void FixedUpdate()
-    {
-        Attract();
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        Gem gem = other.gameObject.GetComponentInParent<Gem>();
-        if (_nearbyGems.Contains(gem)) return;
-        _nearbyGems.Add(gem);
-    }
+        private CurrencyManager _currencyManager;
     
-    private void Attract()
-    {
-        if (_nearbyGems.Count <= 0) return;
-        for (int i = _nearbyGems.Count - 1; i >= 0; i--)
+        private List<Gem> _nearbyGems;
+    
+        private void Start()
         {
-            Gem gem = _nearbyGems[i];
-            if (!gem)
+            _nearbyGems = new List<Gem>();
+        
+            _currencyManager = CurrencyManager.Instance;
+        }
+    
+
+        private void FixedUpdate()
+        {
+            Attract();
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            Gem gem = other.gameObject.GetComponentInParent<Gem>();
+            if (_nearbyGems.Contains(gem)) return;
+            _nearbyGems.Add(gem);
+        }
+    
+        private void Attract()
+        {
+            if (_nearbyGems.Count <= 0) return;
+            for (int i = _nearbyGems.Count - 1; i >= 0; i--)
             {
-                _nearbyGems.RemoveAt(i);
-                continue;
-            }
-            gem.AttractTo(transform);
-            if (Vector3.Distance(transform.position, gem.transform.position) <= m_CollectDistance)
-            {
-                _currencyManager.IncrementGemCount(gem.GemValue);
-                _nearbyGems.RemoveAt(i);
-                Destroy(gem.gameObject);
+                Gem gem = _nearbyGems[i];
+                if (!gem)
+                {
+                    _nearbyGems.RemoveAt(i);
+                    continue;
+                }
+                gem.AttractTo(transform);
+                if (Vector3.Distance(transform.position, gem.transform.position) <= m_CollectDistance)
+                {
+                    _currencyManager.IncrementGemCount(gem.GemValue);
+                    _nearbyGems.RemoveAt(i);
+                    Destroy(gem.gameObject);
+                }
             }
         }
-    }
     
-    public void ReduceGemCount(int amount)
-    {
-        _currencyManager.DecrementGemCount(amount);
+        public void ReduceGemCount(int amount)
+        {
+            _currencyManager.DecrementGemCount(amount);
+        }
     }
 }

@@ -1,4 +1,5 @@
 using DG.Tweening;
+using ShooterGame.Player;
 using ScriptableObjects;
 using UnityEngine;
 using UnityEngine.UI;
