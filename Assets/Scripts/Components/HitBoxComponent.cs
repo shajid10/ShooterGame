@@ -20,7 +20,6 @@ public class HitBoxComponent : MonoBehaviour
         if (m_LayerMask == (m_LayerMask | (1 << other.gameObject.layer)))
         {
             _target = other.GetComponent<HurtBoxComponent>();
-            print(_target);
         }
     }
 
