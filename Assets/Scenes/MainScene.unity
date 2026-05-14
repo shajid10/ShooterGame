@@ -1912,8 +1912,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c687223b0cc74844b1451ddca86605c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthComponent
-  m_Health: 10000
-  m_MaxHealth: 10000
+  m_Health: 200
+  m_MaxHealth: 200
 --- !u!54 &456924865
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6213,7 +6213,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6751703511169892679, guid: 69bcf3ea4a05d154a8289010b139ad81, type: 3}
       propertyPath: m_Knockback
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6751703511169892679, guid: 69bcf3ea4a05d154a8289010b139ad81, type: 3}
       propertyPath: m_BulletPrefab

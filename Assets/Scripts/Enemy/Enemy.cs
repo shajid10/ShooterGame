@@ -46,7 +46,15 @@ public class Enemy : MonoBehaviour {
     private void Update() {
         if (!_navAgent) return;
         
-        if (_player && !_player.IsDead())
+        if (_player.IsDead())
+        {
+            m_Animator.SetBool(IsAttacking, false);
+            m_Animator.SetBool(HasTarget, false);
+            _navAgent.speed = 0;
+            return;
+        }
+        
+        if (_player)
         {
             _navAgent.SetDestination(_player.transform.position);
             _directionToPlayer = _player.transform.position - transform.position;
@@ -90,7 +98,7 @@ public class Enemy : MonoBehaviour {
         
         Instantiate(m_DeathParticles, transform.position, Quaternion.identity);
         Instantiate(m_Gem, transform.position, Quaternion.identity);
-        _lootDropManager.SpawnLootDropBasedOnChance(0.2f);
+        _lootDropManager.SpawnLootDropBasedOnChance(0.1f);
         
         m_DeathParticles.Play();
         m_Animator.SetTrigger(Death);

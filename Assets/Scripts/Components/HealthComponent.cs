@@ -10,6 +10,11 @@ namespace ShooterGame.Components
         public event Action HealthChangedEvent;
         public event Action DeathEvent;
 
+        private void Start()
+        {
+            HealthChangedEvent?.Invoke();
+        }
+
         public void ReduceHealth(int amount)
         {
             m_Health -= amount;
