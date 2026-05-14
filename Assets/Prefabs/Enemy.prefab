@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1808807386517961264}
   - component: {fileID: 7112308527085448180}
   - component: {fileID: 3868261425381976179}
-  - component: {fileID: 600539522323666756}
+  - component: {fileID: 8627567653620013824}
   m_Layer: 8
   m_Name: Enemy
   m_TagString: Enemy
@@ -55,6 +55,7 @@ MonoBehaviour:
   m_MoveSpeed: 3
   m_DeathParticles: {fileID: 7295410818338732598, guid: a2aa6ed16862f8c40ad1f98146b3422c, type: 3}
   m_Gem: {fileID: 5281615192667678164, guid: 10355471598ca7940b1ddb1b2440953d, type: 3}
+  m_DeadBodyStayTime: 10
   m_Animator: {fileID: 3903569925582701547}
 --- !u!54 &6661020455128214887
 Rigidbody:
@@ -133,22 +134,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HealthComponent
   m_Health: 100
   m_MaxHealth: 100
---- !u!114 &600539522323666756
+--- !u!114 &8627567653620013824
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 491978197877446929}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c57efcc538b6d046b35b8b9cab9e89f, type: 3}
+  m_Script: {fileID: 11500000, guid: 01c31c27e4fdcdd43a626234c0c51500, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HitBoxComponent
-  m_Damage: 10
-  m_LayerMask:
-    serializedVersion: 2
-    m_Bits: 0
+  m_EditorClassIdentifier: Assembly-CSharp::LootDropManager
+  m_LootDropPrefab: {fileID: 2508210870779079736, guid: 9bcdc0fd6cddc3549a035f41531cd3b4, type: 3}
 --- !u!1 &5124426674461652811
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,7 +160,7 @@ GameObject:
   - component: {fileID: 1331530292104280456}
   - component: {fileID: 3489722512278511578}
   m_Layer: 8
-  m_Name: Capsule
+  m_Name: Collider
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

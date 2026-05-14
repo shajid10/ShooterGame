@@ -23,13 +23,17 @@ public class Enemy : MonoBehaviour {
     private Rigidbody _rb;
     private EnemyFlash _enemyFlash;
     private HealthComponent _health;
+    private LootDropManager _lootDropManager;
+    private Collider _collider;
 
     private void Start() {
         _player = Player.Instance;
         _enemyFlash = GetComponent<EnemyFlash>();
         _navAgent = GetComponent<NavMeshAgent>();
         _rb = GetComponent<Rigidbody>();
+        _collider = GetComponentInChildren<Collider>();
         _health = GetComponent<HealthComponent>();
+        _lootDropManager = GetComponent<LootDropManager>();
         
         _navAgent.speed = m_MoveSpeed;
         _navAgent.stoppingDistance = 1f;
@@ -79,11 +83,16 @@ public class Enemy : MonoBehaviour {
         _navAgent.speed = 0;
         Destroy(_rb);
         Destroy(_navAgent);
+        Destroy(_collider);
+        
         Instantiate(m_DeathParticles, transform.position, Quaternion.identity);
         Instantiate(m_Gem, transform.position, Quaternion.identity);
+        _lootDropManager.SpawnLootDropBasedOnChance(0.2f);
+        
         m_DeathParticles.Play();
         m_Animator.SetTrigger(Death);
-        Destroy(gameObject, 10f);
+        
+        Destroy(gameObject, m_DeadBodyStayTime);
     }
 
     public void SetMaxHealth(int maxHealth)

@@ -26,15 +26,14 @@ public class HitBoxComponent : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        // if (m_LayerMask == (m_LayerMask | (1 << other.gameObject.layer)))
-        // {
-        //     _target = null;
-        // }
+        if (m_LayerMask == (m_LayerMask | (1 << other.gameObject.layer)))
+        {
+            _target = null;
+        }
     }
 
     public void DealDamage()
     {
-        print(_target);
         if (_target)
         {
             _target.GetHurt(m_Damage);
