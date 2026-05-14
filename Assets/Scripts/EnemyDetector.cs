@@ -24,6 +24,7 @@ public class EnemyDetector : MonoBehaviour
         _enemiesInRange.Add(other.transform);
     }
 
+    // TODO: Fix player shooting even when enemy is dead
     private void OnTriggerExit(Collider other)
     {
         if (!other.CompareTag("Enemy")) return;

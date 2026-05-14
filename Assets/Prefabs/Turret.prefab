@@ -51,6 +51,7 @@ MonoBehaviour:
   m_BulletPrefab: {fileID: 2212314598597649601, guid: 4b98d62fd5aa9994a96416dce6539897, type: 3}
   m_BulletSpawnPoint: {fileID: 8916765449992312064}
   m_TimeInterval: 0.8
+  m_Knockback: 2
   m_MuzzleFlash: {fileID: 198234346748616026, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
 --- !u!114 &9014353309055630983
 MonoBehaviour:

@@ -22,7 +22,7 @@ namespace ShooterGame.Components
     
         public void Heal(int amount)
         {
-            m_Health += amount;
+            m_Health = Mathf.Clamp(m_Health + amount, 0, m_MaxHealth);
             HealthChangedEvent?.Invoke();
         }
 

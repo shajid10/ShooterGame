@@ -103,7 +103,7 @@ namespace ShooterGame.Player
                 _hasTarget = true;
                 m_Animator.SetBool(HasTarget, _hasTarget);
                 _shooting = true;
-                m_Gun.SetShooting(true);
+                m_Gun.SetShooting(_shooting);
 
                 Vector3 direction = _currentTarget.position - transform.position;
                 direction.y = 0;
@@ -113,7 +113,7 @@ namespace ShooterGame.Player
                 _hasTarget = false;
                 m_Animator.SetBool(HasTarget, _hasTarget);
                 _shooting = false;
-                m_Gun.SetShooting(false);
+                m_Gun.SetShooting(_shooting);
             }
         }
 
