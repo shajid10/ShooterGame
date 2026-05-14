@@ -9,6 +9,7 @@ public class CurrencyManager : MonoBehaviour
 {
     public static CurrencyManager Instance { get; private set; }
     public static event Action CurrencyChangedEvent;
+    public static event Action<long> CurrencyIncreasedEvent;
     
     [SerializeField] private CurrencyData m_CurrencyData;
     [SerializeField] private GemData m_GemData;
@@ -41,15 +42,16 @@ public class CurrencyManager : MonoBehaviour
         SaveDataAndInvoke();
     }
 
-    public void IncrementGemCount(long gemCount)
+    public void IncrementGemCount(long amount)
     {
-        m_CurrencyData.m_CurrentGemCount += gemCount;
+        m_CurrencyData.m_CurrentGemCount += amount;
         SaveDataAndInvoke();
+        CurrencyIncreasedEvent?.Invoke(amount);
     }
     
-    public void DecrementGemCount(long gemCount)
+    public void DecrementGemCount(long amount)
     {
-        m_CurrencyData.m_CurrentGemCount -= gemCount;
+        m_CurrencyData.m_CurrentGemCount -= amount;
         SaveDataAndInvoke();
     }
 

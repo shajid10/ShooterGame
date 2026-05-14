@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using ShooterGame.Player;
 using ScriptableObjects;
@@ -15,26 +16,38 @@ namespace ShooterGame.UI
         private GemCollector _gemCollector;
 
         private Tweener _barTweener;
+        
+        public static event Action ScoreBarCompletedEvent;
+        
+        private long m_Sum = 0;
 
         private void Start()
         {
-            CurrencyManager.CurrencyChangedEvent += OnGemCountChanged;
-            UpdateUI();
+            CurrencyManager.CurrencyIncreasedEvent += OnGemCountChanged;
+            UpdateUI(0);
         }
 
         private void OnDestroy()
         {
-            CurrencyManager.CurrencyChangedEvent -= OnGemCountChanged;
+            CurrencyManager.CurrencyIncreasedEvent -= OnGemCountChanged;
         }
 
-        private void OnGemCountChanged()
+        private void OnGemCountChanged(long amount)
         {
-            UpdateUI();
+            UpdateUI(amount);
         }
 
-        private void UpdateUI()
+        private void UpdateUI(long amount)
         {
-            float fillPercentage = (CurrencyManager.Instance.GetCurrentGemCount() % m_ScoreThreshold) / (float)m_ScoreThreshold;
+            m_Sum = Math.Clamp(m_Sum + amount, 0, m_ScoreThreshold);
+            if (m_Sum ==  m_ScoreThreshold)
+            {
+                // TODO: Move this to AbilityManager
+                ScoreBarCompletedEvent?.Invoke();
+                m_Sum = 0;
+            }
+            
+            float fillPercentage = (m_Sum) / (float)m_ScoreThreshold;
             
             _barTweener?.Complete();
             _barTweener = transform.DOShakeScale(0.3f, new Vector3(0.1f, 0.1f, 0.1f)).SetLink(gameObject).SetLink(gameObject);
