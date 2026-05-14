@@ -17,18 +17,19 @@ public class Enemy : MonoBehaviour {
     
     [SerializeField] private Animator  m_Animator; 
     private Vector3 _directionToPlayer;
+    private bool _isAlive = true;
 
     private NavMeshAgent _navAgent;
     private Player _player;
     private Rigidbody _rb;
-    private EnemyFlash _enemyFlash;
+    //private EnemyFlash _enemyFlash;
     private HealthComponent _health;
     private LootDropManager _lootDropManager;
     private Collider _collider;
 
     private void Start() {
         _player = Player.Instance;
-        _enemyFlash = GetComponent<EnemyFlash>();
+        //_enemyFlash = GetComponent<EnemyFlash>();
         _navAgent = GetComponent<NavMeshAgent>();
         _rb = GetComponent<Rigidbody>();
         _collider = GetComponentInChildren<Collider>();
@@ -72,7 +73,7 @@ public class Enemy : MonoBehaviour {
     {
         if (_rb)
             _rb.AddForce(-_directionToPlayer * knockback, ForceMode.Impulse);
-        _enemyFlash.Flash();
+        //_enemyFlash.Flash();
         m_Animator.SetTrigger(OnHit);
         transform.DOShakeScale(0.5f, new Vector3(0.1f, 0.1f, 0.1f)).SetLink(gameObject);
         _health.ReduceHealth(damage);
@@ -80,10 +81,12 @@ public class Enemy : MonoBehaviour {
     
     private void OnDeath()
     {
+        _isAlive = false;
         _navAgent.speed = 0;
         Destroy(_rb);
         Destroy(_navAgent);
-        Destroy(_collider);
+        
+        Destroy(_collider.gameObject);
         
         Instantiate(m_DeathParticles, transform.position, Quaternion.identity);
         Instantiate(m_Gem, transform.position, Quaternion.identity);
@@ -103,5 +106,10 @@ public class Enemy : MonoBehaviour {
     private void OnDestroy()
     {
         _health.DeathEvent -= OnDeath;
+    }
+
+    public bool IsAlive()
+    {
+        return _isAlive;
     }
 }

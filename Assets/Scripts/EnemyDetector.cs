@@ -20,18 +20,21 @@ public class EnemyDetector : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Enemy")) return;
+        print(other);
 
         _enemiesInRange.Add(other.transform);
     }
-
-    // TODO: Fix player shooting even when enemy is dead
+    
     private void OnTriggerExit(Collider other)
     {
+        print(other);
         if (!other.CompareTag("Enemy")) return;
+        print(other);
 
         _enemiesInRange.Remove(other.transform);
-
-        if (_currentTarget == other.transform)
+        
+        print(_currentTarget);
+        if (_currentTarget != null && _currentTarget.gameObject == other.gameObject)
         {
             _currentTarget = null;
         }
@@ -46,25 +49,28 @@ public class EnemyDetector : MonoBehaviour
     {
         float closestDistance = Mathf.Infinity;
         Transform nearestEnemy = null;
-
-        // Cleanup + nearest search
         for (int i = _enemiesInRange.Count - 1; i >= 0; i--)
         {
-            if (!_enemiesInRange[i])
+            Transform enemy = _enemiesInRange[i];
+
+            if (!enemy)
             {
                 _enemiesInRange.RemoveAt(i);
                 continue;
             }
 
-            float distance = Vector3.Distance(
-                transform.position,
-                _enemiesInRange[i].position
-            );
+            if (enemy.TryGetComponent(out Enemy enemyObject) && !enemyObject.IsAlive())
+            {
+                _enemiesInRange.RemoveAt(i);
+                continue;
+            }
+
+            float distance = Vector3.Distance(transform.position, enemy.position);
 
             if (distance < closestDistance)
             {
                 closestDistance = distance;
-                nearestEnemy = _enemiesInRange[i];
+                nearestEnemy = enemy;
             }
         }
 

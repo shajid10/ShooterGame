@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class LootDropManager : MonoBehaviour
 {
-    [SerializeField] private GameObject m_LootDropPrefab;
+    [SerializeField] private HealthPickup m_LootDropPrefab;
 
     public void SpawnLootDropBasedOnChance(float chance)
     {

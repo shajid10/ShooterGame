@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9d3b3fed42125d469098729655d2a9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
-  m_EnableSpawning: 1
+  m_EnableSpawning: 0
   m_EnemyPrefab: {fileID: 4324300799179211982, guid: a8d20a2f6476a7d41a43825ae093426c, type: 3}
   m_SpawnPoints:
   - {fileID: 1774017514}
@@ -1912,8 +1912,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c687223b0cc74844b1451ddca86605c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthComponent
-  m_Health: 100
-  m_MaxHealth: 100
+  m_Health: 10000
+  m_MaxHealth: 10000
 --- !u!54 &456924865
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5822,6 +5822,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 456924856}
     m_Modifications:
+    - target: {fileID: 5822111207003582991, guid: 8043e665913b026429186de2b26cc089, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 3839
+      objectReference: {fileID: 0}
     - target: {fileID: 8736734212092267366, guid: 8043e665913b026429186de2b26cc089, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

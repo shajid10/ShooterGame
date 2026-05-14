@@ -91,7 +91,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 491978197877446929}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 324028a9217ab864da5fd2d8b0fb1f98, type: 3}
   m_Name: 
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01c31c27e4fdcdd43a626234c0c51500, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LootDropManager
-  m_LootDropPrefab: {fileID: 2508210870779079736, guid: 9bcdc0fd6cddc3549a035f41531cd3b4, type: 3}
+  m_LootDropPrefab: {fileID: 8742536048999987081, guid: 9bcdc0fd6cddc3549a035f41531cd3b4, type: 3}
 --- !u!1 &5124426674461652811
 GameObject:
   m_ObjectHideFlags: 0
