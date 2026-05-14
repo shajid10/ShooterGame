@@ -4657,6 +4657,10 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6751703511169892679, guid: 69bcf3ea4a05d154a8289010b139ad81, type: 3}
+      propertyPath: m_Knockback
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6751703511169892679, guid: 69bcf3ea4a05d154a8289010b139ad81, type: 3}
       propertyPath: m_BulletPrefab
       value: 
       objectReference: {fileID: 2212314598597649601, guid: 4b98d62fd5aa9994a96416dce6539897, type: 3}

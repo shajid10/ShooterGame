@@ -10,6 +10,7 @@ namespace ShooterGame.Weapons
         [SerializeField] private Bullet m_BulletPrefab;
         [SerializeField] private Transform m_BulletSpawnPoint;
         [SerializeField] private float m_TimeInterval = 0.8f;
+        [SerializeField] private float m_Knockback = 3f;
         [SerializeField] private ParticleSystem m_MuzzleFlash;
     
         private float _timeRemaining = 0f;
@@ -36,6 +37,8 @@ namespace ShooterGame.Weapons
         private void Shoot() {
             Bullet bulletInstance = Instantiate(m_BulletPrefab, m_BulletSpawnPoint.position, m_BulletSpawnPoint.rotation);
             bulletInstance.SetBulletDamage(_damage);
+            bulletInstance.SetKnockback(m_Knockback);
+            
             m_MuzzleFlash.Play();
             ShootEvent?.Invoke();
         }
