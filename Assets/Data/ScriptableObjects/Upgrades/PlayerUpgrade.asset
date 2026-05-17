@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: PlayerUpgrade
   m_EditorClassIdentifier: Assembly-CSharp::ShooterGame.Data.UpgradeData
   m_UpgradeName: Player Damage
-  m_Damage: 20
-  m_Cost: 200
-  m_Level: 1
+  m_Damage: 40
+  m_Cost: 400
+  m_Level: 2
   m_DefaultDamage: 20
   m_DefaultCost: 200
   m_CostMultiplier: 2

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7112308527085448180}
   - component: {fileID: 3868261425381976179}
   - component: {fileID: 8627567653620013824}
+  - component: {fileID: 943371937649117280}
   m_Layer: 8
   m_Name: Enemy
   m_TagString: Enemy
@@ -147,6 +148,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LootDropManager
   m_LootDropPrefab: {fileID: 8742536048999987081, guid: 9bcdc0fd6cddc3549a035f41531cd3b4, type: 3}
+--- !u!114 &943371937649117280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 491978197877446929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62a84ead89f04604ea29e9234d2500b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NumberPopSpawner
+  m_NumberPopUp: {fileID: 7022545362305666010, guid: 111713676533cb94289491c4d9e8964a, type: 3}
+  m_Health: {fileID: 3868261425381976179}
+  m_DamageColor: {r: 0.9622642, g: 0.16794233, b: 0.16794233, a: 1}
+  m_HealColor: {r: 0.124342814, g: 0.9811321, b: 0, a: 1}
+  m_SpawnOffset: {x: 0, y: 2, z: -1.2}
 --- !u!1 &5124426674461652811
 GameObject:
   m_ObjectHideFlags: 0

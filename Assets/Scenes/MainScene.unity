@@ -1941,6 +1941,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &456924867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 308466131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62a84ead89f04604ea29e9234d2500b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NumberPopSpawner
+  m_NumberPopUp: {fileID: 7022545362305666010, guid: 111713676533cb94289491c4d9e8964a, type: 3}
+  m_Health: {fileID: 456924863}
+  m_DamageColor: {r: 0.9622642, g: 0.16794233, b: 0.16794233, a: 1}
+  m_HealColor: {r: 0.124342814, g: 0.9811321, b: 0, a: 1}
+  m_SpawnOffset: {x: 0, y: 2, z: -1.2}
 --- !u!1001 &509422420
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6322,6 +6339,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6294151828348989854, guid: 69bcf3ea4a05d154a8289010b139ad81, type: 3}
       insertIndex: -1
       addedObject: {fileID: 456924865}
+    - targetCorrespondingSourceObject: {fileID: 6294151828348989854, guid: 69bcf3ea4a05d154a8289010b139ad81, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 456924867}
     - targetCorrespondingSourceObject: {fileID: 5465440333059805278, guid: 69bcf3ea4a05d154a8289010b139ad81, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1709958616}

@@ -1,3 +1,4 @@
+using System.Collections;
 using ShooterGame.Player;
 using ShooterGame.Spawners;
 using ShooterGame.Utils;
@@ -60,9 +61,9 @@ public class TurretBuy : MonoBehaviour
         if (this == obj)
         {
             int gemValue = CurrencyManager.Instance.GetGemValue();
-            m_TurretPrice -= gemValue;
             _pendingGemValue -= gemValue;
             
+            m_TurretPrice -= gemValue;
             SavePrice();
             if (m_TurretPrice <= 0)
             {
@@ -86,7 +87,17 @@ public class TurretBuy : MonoBehaviour
     private void CompletePurchase()
     {
         Instantiate(m_TurretPrefab, transform.position, transform.rotation);
-        Destroy(gameObject);
+        
+        
+        if (_pendingGemValue <= 0)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            // Start a Coroutine to wait for gems to finish landing then destroy
+            StartCoroutine(WaitAndDestroy());
+        }
     }
 
     private void UpdateUI()
@@ -102,5 +113,11 @@ public class TurretBuy : MonoBehaviour
     public bool CanReceiveGem()
     {
         return (m_TurretPrice - _pendingGemValue) > 0;
+    }
+    
+    private IEnumerator WaitAndDestroy()
+    {
+        yield return new WaitUntil(() => _pendingGemValue <= 0);
+        Destroy(gameObject);
     }
 }

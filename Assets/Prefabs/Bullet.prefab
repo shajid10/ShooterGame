@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3982206168056324300}
   - component: {fileID: 6690521784520905689}
   - component: {fileID: 2212314598597649601}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,5 +127,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Bullet
   m_Speed: 12
   m_TimeToLive: 3
-  m_Knockback: 4
   m_BulletImpactParticle: {fileID: 5836829992871880211, guid: 0cf4c4cbf81666042a1692417fa510dd, type: 3}

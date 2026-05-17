@@ -826,7 +826,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -7557540490364101082, guid: e4f726f98bf5fef4d8f441c40aba0a6f, type: 3}
+  - {fileID: 2100000, guid: 1e8b47feb92ac514e97caea462e6a794, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -11372,6 +11372,7 @@ MonoBehaviour:
   m_BulletPrefab: {fileID: 4137785768740791107, guid: 4b98d62fd5aa9994a96416dce6539897, type: 3}
   m_BulletSpawnPoint: {fileID: 4539915764866821067}
   m_TimeInterval: 0.8
+  m_Knockback: 3
   m_MuzzleFlash: {fileID: 198234346748616026}
 --- !u!1 &1339101018200438765
 GameObject:
@@ -11994,7 +11995,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6484cf611bdb1174fbdd511adddd398c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GemCollector
-  m_CollectRadius: 4
   m_CollectDistance: 0.4
   m_CollectSpeed: 0
   m_GemLayer:
@@ -12081,10 +12081,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   m_MoveSpeed: 4
   m_RotateSpeed: 10
-  m_DetectionRadius: 5
   m_Gun: {fileID: 6751703511169892679}
   m_Animator: {fileID: 1659387972230245193}
-  m_DynamicJoystick: {fileID: 0}
+  m_PlayerUpgradeData: {fileID: 0}
 --- !u!114 &1007516408791189984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12097,7 +12096,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6484cf611bdb1174fbdd511adddd398c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GemCollector
-  m_CollectRadius: 5
   m_CollectDistance: 0.4
   m_CollectSpeed: 0
   m_GemLayer:
@@ -12344,7 +12342,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -8474651742996372913, guid: e4f726f98bf5fef4d8f441c40aba0a6f, type: 3}
+  - {fileID: 2100000, guid: de2b07d5fd252424b91f1eab49135a42, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

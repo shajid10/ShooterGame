@@ -64,15 +64,17 @@ namespace ShooterGame.Spawners
         {
             if (!_turretBuyZone || !_turretBuyZone.CanReceiveGem())
                 return;
+            int gemValue = _currencyManager.GetGemValue();
+            TurretBuy capturedZone = _turretBuyZone;
             
-            _turretBuyZone.ExpectGem(_currencyManager.GetGemValue());
-            _currencyManager.DecrementGemCount(_currencyManager.GetGemValue());
+            capturedZone.ExpectGem(gemValue);
+            _currencyManager.DecrementGemCount(gemValue);
             
             GameObject gemVisual = Instantiate(m_GemVisual.gameObject, transform.position, Quaternion.identity);
-            gemVisual.transform.DOJump(_turretBuyZone.transform.position, 3f, 1, 0.5f).OnComplete(() =>
+            gemVisual.transform.DOJump(capturedZone.transform.position, 3f, 1, 0.5f).OnComplete(() =>
             {
-                if (_turretBuyZone)
-                    GemDumpedEvent?.Invoke(_turretBuyZone);
+                if (capturedZone)
+                    GemDumpedEvent?.Invoke(capturedZone);
                 Destroy(gemVisual);
             }).SetLink(gemVisual);
         }
