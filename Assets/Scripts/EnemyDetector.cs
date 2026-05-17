@@ -20,20 +20,15 @@ public class EnemyDetector : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Enemy")) return;
-        print(other);
 
         _enemiesInRange.Add(other.transform);
     }
     
     private void OnTriggerExit(Collider other)
     {
-        print(other);
         if (!other.CompareTag("Enemy")) return;
-        print(other);
-
         _enemiesInRange.Remove(other.transform);
         
-        print(_currentTarget);
         if (_currentTarget != null && _currentTarget.gameObject == other.gameObject)
         {
             _currentTarget = null;

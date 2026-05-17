@@ -19,11 +19,14 @@ namespace ShooterGame.UI
 
         private void NumberPop()
         {
-            m_CanvasGroup.DOFade(0f, 3f).SetLink(gameObject);
+            
             m_RectTransform.DOAnchorPos3DY(m_RectTransform.anchoredPosition.y + 2, 1f).SetLink(gameObject).OnComplete(
                 (() =>
                 {
-                    Destroy(gameObject);
+                    m_CanvasGroup.DOFade(0f, 2f).SetLink(gameObject).OnComplete((() =>
+                    {
+                        Destroy(gameObject);
+                    }));
                 }));
         }
 

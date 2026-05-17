@@ -60,6 +60,12 @@ public class CurrencyManager : MonoBehaviour
         return m_GemData.m_Value;
     }
 
+    public void ResetGemCount()
+    {
+        m_CurrencyData.m_CurrentGemCount = 0;
+        SaveDataAndInvoke();
+    }
+
     private void SaveDataAndInvoke()
     {
         SaveManager.SaveLong(CurrencyKey, m_CurrencyData.m_CurrentGemCount);

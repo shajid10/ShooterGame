@@ -30,9 +30,10 @@ namespace ShooterGame.Data
             m_Cost = m_DefaultCost;
             m_Damage = m_DefaultDamage;
             m_Level = 1;
+            UpdateData();
         }
 
-        public void UpdateData()
+        private void UpdateData()
         {
             UpgradeCompleteEvent?.Invoke();
         }

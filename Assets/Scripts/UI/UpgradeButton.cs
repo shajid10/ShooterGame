@@ -24,6 +24,7 @@ public class UpgradeButton : MonoBehaviour
         m_BuyButton.onClick.AddListener(OnBuyButtonClicked);
         
         CurrencyManager.CurrencyChangedEvent += UpdateUI;
+        m_UpgradeData.UpgradeCompleteEvent += UpdateUI;
         UpdateUI();
     }
 
