@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc08ad58db2f22e478fe742e7e305771, type: 3}
   m_Name: CurrencyData
   m_EditorClassIdentifier: Assembly-CSharp::Data.CurrencyData
-  m_CurrentGemCount: 0
+  m_CurrentGemCount: 4100
+  m_CurrentScore: 0
+  m_CurrentTokenCount: 0
+  m_ScoreValue: 100

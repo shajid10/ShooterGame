@@ -290,7 +290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9d3b3fed42125d469098729655d2a9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
-  m_EnableSpawning: 0
+  m_EnableSpawning: 1
   m_EnemyPrefabs:
   - {fileID: 4324300799179211982, guid: a8d20a2f6476a7d41a43825ae093426c, type: 3}
   - {fileID: 4324300799179211982, guid: 33dccc451200acd45a1ad609f2cdd4b2, type: 3}
@@ -2218,6 +2218,19 @@ MonoBehaviour:
   m_DamageColor: {r: 0.9622642, g: 0.16794233, b: 0.16794233, a: 1}
   m_HealColor: {r: 0.124342814, g: 0.9811321, b: 0, a: 1}
   m_SpawnOffset: {x: 0, y: 2, z: -1.2}
+--- !u!114 &456924868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 308466131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28e5b961994849b4fb8caee1621feb07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AbilityManager
+  m_ThresholdMultiplier: 2
 --- !u!1001 &509422420
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5737,7 +5750,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI.ScoreBar
   m_FillImage: {fileID: 189951721}
-  m_ScoreThreshold: 500
 --- !u!1 &2012754740
 GameObject:
   m_ObjectHideFlags: 0
@@ -6621,6 +6633,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6294151828348989854, guid: 69bcf3ea4a05d154a8289010b139ad81, type: 3}
       insertIndex: -1
       addedObject: {fileID: 456924867}
+    - targetCorrespondingSourceObject: {fileID: 6294151828348989854, guid: 69bcf3ea4a05d154a8289010b139ad81, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 456924868}
     - targetCorrespondingSourceObject: {fileID: 5465440333059805278, guid: 69bcf3ea4a05d154a8289010b139ad81, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1709958616}

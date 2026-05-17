@@ -16,7 +16,7 @@ namespace ShooterGame.UI
         private void Start()
         {
             _currencyManager = CurrencyManager.Instance;
-            CurrencyManager.CurrencyChangedEvent += OnGemCountChanged;
+            CurrencyManager.GemCountChangedEvent += OnGemCountChanged;
             
             m_Text.text = "0";
             UpdateUI();
@@ -24,7 +24,7 @@ namespace ShooterGame.UI
 
         private void OnDestroy()
         {
-            CurrencyManager.CurrencyChangedEvent -= OnGemCountChanged;
+            CurrencyManager.GemCountChangedEvent -= OnGemCountChanged;
         }
         
         private void OnGemCountChanged()

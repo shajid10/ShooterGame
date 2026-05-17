@@ -23,14 +23,14 @@ public class UpgradeButton : MonoBehaviour
         
         m_BuyButton.onClick.AddListener(OnBuyButtonClicked);
         
-        CurrencyManager.CurrencyChangedEvent += UpdateUI;
+        CurrencyManager.GemCountChangedEvent += UpdateUI;
         m_UpgradeData.UpgradeCompleteEvent += UpdateUI;
         UpdateUI();
     }
 
     private void OnDestroy()
     {
-        CurrencyManager.CurrencyChangedEvent -= UpdateUI;
+        CurrencyManager.GemCountChangedEvent -= UpdateUI;
     }
 
     private void OnBuyButtonClicked()

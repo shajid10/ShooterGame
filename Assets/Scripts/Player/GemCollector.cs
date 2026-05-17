@@ -48,6 +48,7 @@ namespace ShooterGame.Player
                 if (Vector3.Distance(transform.position, gem.transform.position) <= m_CollectDistance)
                 {
                     _currencyManager.IncrementGemCount(gem.GemValue);
+                    _currencyManager.IncrementScore();
                     _nearbyGems.RemoveAt(i);
                     Destroy(gem.gameObject);
                 }
