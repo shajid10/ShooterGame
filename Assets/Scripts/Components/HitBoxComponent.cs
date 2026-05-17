@@ -12,7 +12,7 @@ public class HitBoxComponent : MonoBehaviour
     public int Damage
     {
         get => m_Damage;
-        private set => m_Damage = value;
+        set => m_Damage = value;
     }
 
     private void OnTriggerEnter(Collider other)

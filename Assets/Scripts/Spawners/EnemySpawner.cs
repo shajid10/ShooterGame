@@ -7,7 +7,7 @@ namespace ShooterGame.Spawners
     public class EnemySpawner : MonoBehaviour
     {
         [SerializeField] private bool m_EnableSpawning = true;
-        [SerializeField] private Enemy m_EnemyPrefab;
+        [SerializeField] private List<Enemy> m_EnemyPrefabs;
         [SerializeField] private List<Transform> m_SpawnPoints;
 
         [SerializeField] private float m_TimeInterval = 10f;
@@ -35,7 +35,8 @@ namespace ShooterGame.Spawners
             int selectedSpawnPointIndex = Random.Range(0, m_SpawnPoints.Count);
             Transform selectedSpawnPoint = m_SpawnPoints[selectedSpawnPointIndex];
 
-            Instantiate(m_EnemyPrefab, selectedSpawnPoint.position, selectedSpawnPoint.rotation);
+            int enemyType =  Random.Range(0, 2);
+            Instantiate(m_EnemyPrefabs[enemyType], selectedSpawnPoint.position, selectedSpawnPoint.rotation);
         }
     }
 }

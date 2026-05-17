@@ -1,7 +1,6 @@
 using System;
 using DG.Tweening;
 using ShooterGame.Player;
-using ScriptableObjects;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,7 +11,6 @@ namespace ShooterGame.UI
         [SerializeField] private Image m_FillImage;
         [SerializeField] private int m_ScoreThreshold;
         
-        [SerializeField] private PlayerData m_Player;
         private GemCollector _gemCollector;
 
         private Tweener _barTweener;

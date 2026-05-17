@@ -1,5 +1,4 @@
 using System;
-using ScriptableObjects;
 using ShooterGame.Data;
 using UnityEngine;
 

@@ -37,6 +37,11 @@ namespace ShooterGame.Components
 
         public int GetHealth() { return m_Health; }
         public int GetMaxHealth() { return m_MaxHealth; }
+
+        public void SetHealth(int value)
+        {
+            m_Health = value;
+        }
         public void SetMaxHealth(int value) => m_MaxHealth = value;
         public float GetHealthPercentage() { return (float)m_Health / m_MaxHealth; }
     }

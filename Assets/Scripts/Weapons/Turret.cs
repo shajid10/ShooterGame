@@ -1,7 +1,5 @@
 using System;
-using ScriptableObjects;
 using ShooterGame.Data;
-using ShooterGame.ScriptableObjects;
 using UnityEngine;
 
 namespace ShooterGame.Weapons

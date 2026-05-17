@@ -1,123 +1,132 @@
-using ShooterGame.Components;
-using UnityEngine;
 using DG.Tweening;
+using ShooterGame.Components;
+using ShooterGame;
+using ShooterGame.Data;
 using ShooterGame.Player;
+using UnityEngine;
 using UnityEngine.AI;
 
-public class Enemy : MonoBehaviour {
-    private static readonly int HasTarget = Animator.StringToHash("HasTarget");
-    private static readonly int Death = Animator.StringToHash("OnDeath");
-    private static readonly int OnHit = Animator.StringToHash("OnHit");
-    private static readonly int IsAttacking = Animator.StringToHash("IsAttacking");
 
-    [SerializeField] private float m_MoveSpeed = 3f;
-    [SerializeField] private ParticleSystem m_DeathParticles;
-    [SerializeField] private Gem m_Gem;
-    [SerializeField] private float m_DeadBodyStayTime = 10f;
+    public class Enemy : MonoBehaviour {
+        private static readonly int HasTarget = Animator.StringToHash("HasTarget");
+        private static readonly int Death = Animator.StringToHash("OnDeath");
+        private static readonly int OnHit = Animator.StringToHash("OnHit");
+        private static readonly int IsAttacking = Animator.StringToHash("IsAttacking");
+
+        [SerializeField] private EnemyData m_EnemyData;
+        [SerializeField] private ParticleSystem m_DeathParticles;
+        [SerializeField] private Gem m_Gem;
+        [SerializeField] private float m_DeadBodyStayTime = 10f;
     
-    [SerializeField] private Animator  m_Animator; 
-    private Vector3 _directionToPlayer;
-    private bool _isAlive = true;
+        [SerializeField] private Animator  m_Animator; 
+        private Vector3 _directionToPlayer;
+        private bool _isAlive = true;
 
-    private NavMeshAgent _navAgent;
-    private Player _player;
-    private Rigidbody _rb;
-    //private EnemyFlash _enemyFlash;
-    private HealthComponent _health;
-    private LootDropManager _lootDropManager;
-    private Collider _collider;
+        private NavMeshAgent _navAgent;
+        private Player _player;
+        private Rigidbody _rb;
+        //private EnemyFlash _enemyFlash;
+        private HealthComponent _health;
+        private LootDropManager _lootDropManager;
+        private Collider _collider;
+        private HitBoxComponent _hitBox;
 
-    private void Start() {
-        _player = Player.Instance;
-        //_enemyFlash = GetComponent<EnemyFlash>();
-        _navAgent = GetComponent<NavMeshAgent>();
-        _rb = GetComponent<Rigidbody>();
-        _collider = GetComponentInChildren<Collider>();
-        _health = GetComponent<HealthComponent>();
-        _lootDropManager = GetComponent<LootDropManager>();
+        private void Start() {
+            _player = Player.Instance;
+            //_enemyFlash = GetComponent<EnemyFlash>();
+            _navAgent = GetComponent<NavMeshAgent>();
+            _rb = GetComponent<Rigidbody>();
+            _collider = GetComponentInChildren<Collider>();
+            _health = GetComponent<HealthComponent>();
+            _lootDropManager = GetComponent<LootDropManager>();
+            _hitBox = GetComponentInChildren<HitBoxComponent>();
         
-        _navAgent.speed = m_MoveSpeed;
-        _navAgent.stoppingDistance = 1f;
+            _hitBox.Damage = m_EnemyData.m_Damage;
+            _navAgent.speed = m_EnemyData.m_Speed;
+            _health.SetMaxHealth(m_EnemyData.m_Health);
+            _health.SetHealth(m_EnemyData.m_Health);
+            
+            _navAgent.stoppingDistance = 1f;
         
-        _health.DeathEvent += OnDeath;
-    }
-    
-
-    private void Update() {
-        if (!_navAgent) return;
-        
-        if (_player.IsDead())
-        {
-            m_Animator.SetBool(IsAttacking, false);
-            m_Animator.SetBool(HasTarget, false);
-            _navAgent.speed = 0;
-            return;
+            _health.DeathEvent += OnDeath;
         }
-        
-        if (_player)
-        {
-            _navAgent.SetDestination(_player.transform.position);
-            _directionToPlayer = _player.transform.position - transform.position;
+    
 
-            if (_navAgent.remainingDistance <= _navAgent.stoppingDistance)
+        private void Update() {
+            if (!_navAgent) return;
+        
+            if (_player.IsDead())
             {
-                m_Animator.SetBool(IsAttacking, true);
+                m_Animator.SetBool(IsAttacking, false);
+                m_Animator.SetBool(HasTarget, false);
                 _navAgent.speed = 0;
+                return;
+            }
+        
+            if (_player)
+            {
+                _navAgent.SetDestination(_player.transform.position);
+                _directionToPlayer = _player.transform.position - transform.position;
+
+                if (_navAgent.remainingDistance <= _navAgent.stoppingDistance)
+                {
+                    m_Animator.SetBool(IsAttacking, true);
+                    _navAgent.speed = 0;
+                }
+                else
+                {
+                    m_Animator.SetBool(IsAttacking, false);
+                    _navAgent.speed = m_EnemyData.m_Speed;
+                }
             }
             else
             {
-                m_Animator.SetBool(IsAttacking, false);
-                _navAgent.speed = m_MoveSpeed;
+                _navAgent.speed = 0;
+                m_Animator.SetBool(HasTarget, false);
             }
         }
-        else
+
+        public void GetHurt(int damage,  float knockback)
         {
+            if (_rb)
+                _rb.AddForce(-_directionToPlayer * knockback, ForceMode.Impulse);
+            //_enemyFlash.Flash();
+            m_Animator.SetTrigger(OnHit);
+            transform.DOShakeScale(0.5f, new Vector3(0.1f, 0.1f, 0.1f)).SetLink(gameObject);
+            _health.ReduceHealth(damage);
+        }
+    
+        private void OnDeath()
+        {
+            _isAlive = false;
             _navAgent.speed = 0;
-            m_Animator.SetBool(HasTarget, false);
+            Destroy(_rb);
+            Destroy(_navAgent);
+        
+            Destroy(_collider.gameObject);
+        
+            Instantiate(m_DeathParticles, transform.position, Quaternion.identity);
+            Instantiate(m_Gem, transform.position, Quaternion.identity);
+            _lootDropManager.SpawnLootDropBasedOnChance(0.1f);
+        
+            m_DeathParticles.Play();
+            m_Animator.SetTrigger(Death);
+        
+            Destroy(gameObject, m_DeadBodyStayTime);
+        }
+
+        public void SetMaxHealth(int maxHealth)
+        {
+            _health.SetMaxHealth(maxHealth);
+        }
+
+        private void OnDestroy()
+        {
+            _health.DeathEvent -= OnDeath;
+        }
+
+        public bool IsAlive()
+        {
+            return _isAlive;
         }
     }
-
-    public void Hurt(int damage,  float knockback)
-    {
-        if (_rb)
-            _rb.AddForce(-_directionToPlayer * knockback, ForceMode.Impulse);
-        //_enemyFlash.Flash();
-        m_Animator.SetTrigger(OnHit);
-        transform.DOShakeScale(0.5f, new Vector3(0.1f, 0.1f, 0.1f)).SetLink(gameObject);
-        _health.ReduceHealth(damage);
-    }
-    
-    private void OnDeath()
-    {
-        _isAlive = false;
-        _navAgent.speed = 0;
-        Destroy(_rb);
-        Destroy(_navAgent);
-        
-        Destroy(_collider.gameObject);
-        
-        Instantiate(m_DeathParticles, transform.position, Quaternion.identity);
-        Instantiate(m_Gem, transform.position, Quaternion.identity);
-        _lootDropManager.SpawnLootDropBasedOnChance(0.1f);
-        
-        m_DeathParticles.Play();
-        m_Animator.SetTrigger(Death);
-        
-        Destroy(gameObject, m_DeadBodyStayTime);
-    }
-
-    public void SetMaxHealth(int maxHealth)
-    {
-        _health.SetMaxHealth(maxHealth);
-    }
-
-    private void OnDestroy()
-    {
-        _health.DeathEvent -= OnDeath;
-    }
-
-    public bool IsAlive()
-    {
-        return _isAlive;
-    }
-}

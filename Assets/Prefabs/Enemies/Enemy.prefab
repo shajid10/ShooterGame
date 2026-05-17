@@ -53,7 +53,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efac3ba0bdabc9b41ad7fb4207db25e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  m_MoveSpeed: 3
+  m_EnemyData: {fileID: 11400000, guid: 2fad05fe89a89814b971e64d568b1803, type: 2}
   m_DeathParticles: {fileID: 7295410818338732598, guid: a2aa6ed16862f8c40ad1f98146b3422c, type: 3}
   m_Gem: {fileID: 5281615192667678164, guid: 10355471598ca7940b1ddb1b2440953d, type: 3}
   m_DeadBodyStayTime: 10
@@ -551,6 +551,18 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -5690568314566258351, guid: ceab972275900084a8502208c46dd530, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -5602156011692487775, guid: ceab972275900084a8502208c46dd530, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -1372682465251703209, guid: ceab972275900084a8502208c46dd530, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -1372682465251703209, guid: ceab972275900084a8502208c46dd530, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -558,6 +570,18 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ceab972275900084a8502208c46dd530, type: 3}
       propertyPath: m_Name
       value: ZombieModel
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ceab972275900084a8502208c46dd530, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2165968031421842321, guid: ceab972275900084a8502208c46dd530, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2946127283979886938, guid: ceab972275900084a8502208c46dd530, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: ceab972275900084a8502208c46dd530, type: 3}
       propertyPath: m_Controller

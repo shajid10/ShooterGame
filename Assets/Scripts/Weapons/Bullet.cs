@@ -21,7 +21,7 @@ namespace ShooterGame.Weapons
         private void OnTriggerEnter(Collider other) {
             if (other.gameObject.CompareTag("Enemy")) {
                 Enemy enemy = other.gameObject.GetComponentInParent<Enemy>();
-                enemy.Hurt(_damage, _knockback);
+                enemy.GetHurt(_damage, _knockback);
                 Instantiate(m_BulletImpactParticle, transform.position, transform.rotation);
                 Destroy(gameObject);
             }
